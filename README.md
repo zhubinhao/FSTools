@@ -1,4 +1,3 @@
-# zxbx-applet
 
 ## Project setup
 ```
