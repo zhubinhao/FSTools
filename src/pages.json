@@ -1,0 +1,66 @@
+{
+	"pages": [
+		{
+			"path": "pages/index/index",
+			"style": {
+				"navigationBarTitleText": "产品中心"
+			}
+		},
+		{
+			"path": "pages/project/project",
+			"style": {
+				"navigationBarTitleText": "工程选型"
+			}
+		},
+		{
+			"path": "pages/formula/formula",
+			"style": {
+				"navigationBarTitleText": "计算公式"
+			}
+		},
+		{
+			"path": "pages/about/about",
+			"style": {
+				"navigationBarTitleText": "公司介绍"
+			}
+		}
+	],
+	"globalStyle": {
+		"backgroundTextStyle": "light",
+		"navigationBarBackgroundColor": "#fff",
+		"navigationBarTitleText": "军友射频",
+		"navigationBarTextStyle": "black"
+	},
+	"tabBar": {
+		"color": "#8a8a8a",
+		"selectedColor": "#1296db",
+		"borderStyle": "black",
+		"backgroundColor": "#ffffff",
+		"list": [
+			{
+				"pagePath": "pages/index/index",
+				"iconPath": "static/img/首页.png",
+				"selectedIconPath": "static/img/首页1.png",
+				"text": "产品中心"
+			},
+			{
+				"pagePath": "pages/project/project",
+				"iconPath": "static/img/工程.png",
+				"selectedIconPath": "static/img/工程1.png",
+				"text": "工程选型"
+			},
+			{
+				"pagePath": "pages/formula/formula",
+				"iconPath": "static/img/公式.png",
+				"selectedIconPath": "static/img/公式1.png",
+				"text": "计算公式"
+			},
+			{
+				"pagePath": "pages/about/about",
+				"iconPath": "static/img/我的.png",
+				"selectedIconPath": "static/img/我的1.png",
+				"text": "公司介绍"
+			}
+		]
+	}
+}
