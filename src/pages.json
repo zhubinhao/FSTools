@@ -7,6 +7,12 @@
 			}
 		},
 		{
+			"path": "pages/index/details",
+			"style": {
+				"navigationBarTitleText": "产品详情"
+			}
+		},
+		{
 			"path": "pages/project/project",
 			"style": {
 				"navigationBarTitleText": "工程选型"
