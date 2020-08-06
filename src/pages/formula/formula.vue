@@ -1,41 +1,32 @@
 <template>
-	<view class="content">
-        <web-view :src="path" v-if="path"></web-view>
-	</view>
+    <view class="content">
+        <view @click="open">按钮</view>
+		<u-left @setData= "setData" ref="leftRef"></u-left>
+    </view>
 </template>
 
-<script lang="ts">  
-import { Vue, Component, Provide } from 'vue-property-decorator'; 
-import {pathUrlv1} from '@/utils/path'
-import {http} from '@/utils/http'
-import {chooseData} from '@/utils/api'
+<script lang="ts">
+import { Vue, Component, Provide } from 'vue-property-decorator';
+import Left from '@/component/left.vue';
 
-@Component({  
-  name: 'Index',
-  components:{
-  }
-})  
-export default class Index extends Vue { 
-	@Provide() path: string ='';
+@Component({
+    name: 'Index',
+    components: {
+        'u-left': Left,
+    },
+})
+export default class Index extends Vue {
+    @Provide() path: string = '';
 	@Provide() urlData: string = '';
 	
-	onLoad(options:any={}){
-		options.scene?this.getData(options.scene):this.init(options)
+	setData(str:string):void{
+		console.log(str)
 	}
-	init(e:any):void{
-		if(e.istrue){
-			delete e.istrue
-			this.path = `${pathUrlv1}/pages/paySuccessIndex/index${chooseData(e,this.urlData+'&')}`
-		}
+	open():void{
+		(this.$refs.leftRef as any).open()
 	}
-	async getData(scene:string){
-		uni.showLoading({title: '加载中'});
-		const qrcodeData = await http({url:'/miniapp/qrcode/ext/info',data:{id:scene},method:'GET'}).then((res:any)=>res.detail.qrcodeData)
-		this.urlData = qrcodeData.startsWith('?')?qrcodeData:'?'+qrcodeData
-		this.path = `${pathUrlv1}${this.urlData}`
-		uni.hideLoading()
-	}
-}  
+
+}
 </script>
 <style >
 </style>
