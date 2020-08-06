@@ -3,6 +3,7 @@
         <view class='banner'>
            <image :src="bannerImg" mode="aspectFill"></image>
         </view>
+        {{title}}
         <u-list></u-list>
     </view>
 </template>
@@ -10,6 +11,7 @@
 <script lang="ts">
 import { Vue, Component, Provide } from 'vue-property-decorator';
 import List from '@/component/list.vue'
+import {i18n} from '@/utils/i18n'
 
 @Component({
     name: 'Index',
@@ -19,6 +21,7 @@ import List from '@/component/list.vue'
 })
 export default class Index extends Vue {
     @Provide() bannerImg:string = require("@/static/img/banner.jpg")
+    @Provide() title:any = i18n.t('user.name')
     public $refs!: {};
 }
 </script>

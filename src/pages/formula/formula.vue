@@ -21,6 +21,10 @@ export default class Index extends Vue {
 	
 	setData(str:string):void{
 		console.log(str)
+        uni.setTabBarItem({
+            index:1,
+            text:'hah'
+        })
 	}
 	open():void{
 		(this.$refs.leftRef as any).open()

@@ -1,6 +1,6 @@
 <template>
-  <view class="Left" v-if="show" @click.stop="close()">
-      <view class="content" @click.stop="pro"><view>
+  <view class="Left" v-if="show" @click.stop="close">
+      <view class="content" @click.stop="pro"></view>
      
   </view>
 </template>
