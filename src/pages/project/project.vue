@@ -7,15 +7,15 @@
         <view>
             <swiper :style='{height:screenHeight}' :current="type" @change="changeType">
                 <swiper-item>
-                    <scroll-view scroll-y :style='{height:screenHeight}' class="pt70">
+                    <scroll-view scroll-y :style='{height:screenHeight}' class="box">
                         <!-- 电缆比较 -->
-                        <contrast></contrast>
+                        <contrast ></contrast>
                     </scroll-view>
                 </swiper-item>
                 <swiper-item>
-                    <scroll-view scroll-y :style='{height:screenHeight}' class="pt70">
+                    <scroll-view scroll-y :style='{height:screenHeight}' class="box">
                         <!-- 参数选电缆 -->
-                        <seach></seach>
+                        <seach ></seach>
                     </scroll-view>
 
                 </swiper-item>
@@ -76,9 +76,10 @@ export default class Project extends Vue {
             border-bottom: 1px solid #4379fe;
         }
     }
-    .pt70 {
-		margin: 70rpx 30rpx 30rpx 30rpx;
-		
+    .box{
+
+		margin: 70rpx 30rpx 0rpx 30rpx;
     }
+    
 }
 </style>

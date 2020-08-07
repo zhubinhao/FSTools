@@ -1,82 +1,83 @@
 <template>
     <view class="Contrast">
         <view class='li'>
-            <text>电缆型号:</text>
-            <input type='number' class='iput' disabled placeholder="请选择" />
-            <input type='number' class='iput' disabled placeholder="请选择" />
+            <text>{{z18n.t1}}:</text>
+            <input type='number' class='iput' disabled :placeholder="z18n.msg1" />
+            <input type='number' class='iput' disabled :placeholder="z18n.msg1" />
         </view>
         <view class='li'>
-            <text>左端连接器:</text>
-            <input type='text' disabled placeholder="请选择" />
+            <text>{{z18n.t2}}:</text>
+            <input type='text' disabled :placeholder="z18n.msg1" />
         </view>
         <view class='li'>
-            <text>右端连接器:</text>
-            <input type='text' disabled placeholder="请选择" />
+            <text>{{z18n.t3}}:</text>
+            <input type='text' disabled :placeholder="z18n.msg1" />
         </view>
         <view class='li1'>
-            <text>频率(P):</text>
-            <input type='number' placeholder="请输入" />GHZ
+            <text>{{z18n.t4}}:</text>
+            <input type='number' :placeholder="z18n.msg2" />GHZ
         </view>
         <view class='li1'>
-            <text>长度(L):</text>
-            <input type='number' placeholder="请输入" />M
+            <text>{{z18n.t5}}:</text>
+            <input type='number' :placeholder="z18n.msg2" />M
         </view>
 
         <view class='li1'>
-            <text>电缆外径(D):</text>
-            <view>待求结果</view>
-            <view>待求结果</view>mm
+            <text>{{z18n.t6}}:</text>
+            <view>{{z18n.msg3}}</view>
+            <view>{{z18n.msg3}}</view>mm
         </view>
         <view class='li1'>
-            <text>频率范围(F):</text>
-            <view>待求结果</view>
-            <view>待求结果</view>GHZ
+            <text>{{z18n.t7}}:</text>
+            <view>{{z18n.msg3}}</view>
+            <view>{{z18n.msg3}}</view>GHZ
         </view>
         <view class='li1'>
-            <text>插入损耗(IL):</text>
-            <view>待求结果</view>
-            <view>待求结果</view>dB
+            <text>{{z18n.t8}}:</text>
+            <view>{{z18n.msg3}}</view>
+            <view>{{z18n.msg3}}</view>dB
         </view>
         <view class='li1'>
-            <text>电压驻波比(VSWR):</text>
-            <view>待求结果</view>
-            <view>待求结果</view>Max
+            <text>{{z18n.t9}}:</text>
+            <view>{{z18n.msg3}}</view>
+            <view>{{z18n.msg3}}</view>Max
         </view>
         <view class='li1'>
-            <text>时延(Td):</text>
-            <view>待求结果</view>
-            <view>待求结果</view>ns/m
+            <text>{{z18n.t10}}:</text>
+            <view>{{z18n.msg3}}</view>
+            <view>{{z18n.msg3}}</view>ns/m
         </view>
         <view class='li1'>
-            <text>电缆耐压(DC):</text>
-            <view>待求结果</view>
-            <view>待求结果</view>Vr.m.s
+            <text>{{z18n.t11}}:</text>
+            <view>{{z18n.msg3}}</view>
+            <view>{{z18n.msg3}}</view>Vr.m.s
         </view>
         <view class='li1'>
-            <text>平均功率(P):</text>
-            <view>待求结果</view>
-            <view>待求结果</view>KW
+            <text>{{z18n.t12}}:</text>
+            <view>{{z18n.msg3}}</view>
+            <view>{{z18n.msg3}}</view>KW
         </view>
         <view class='li1'>
-            <text>温度相位(PPM):</text>
-            <view>待求结果</view>
-            <view>待求结果</view>
+            <text>{{z18n.t13}}:</text>
+            <view>{{z18n.msg3}}</view>
+            <view>{{z18n.msg3}}</view>
         </view>
         <view class='li2'>
-            <text>K1:</text>
-            <view>待求结果</view>
-            <view>待求结果</view>
+            <text>{{z18n.t14}}:</text>
+            <view>{{z18n.msg3}}</view>
+            <view>{{z18n.msg3}}</view>
         </view>
         <view class='li2'>
-            <text>K2:</text>
-            <view>待求结果</view>
-            <view>待求结果</view>
+            <text>{{z18n.t15}}:</text>
+            <view>{{z18n.msg3}}</view>
+            <view>{{z18n.msg3}}</view>
         </view>
     </view>
 </template>
 
 <script lang="ts">
 import { Vue, Component, Provide } from 'vue-property-decorator';
+import {i18n} from '@/utils/i18n'
 
 @Component({
     name: 'Contrast',
@@ -84,6 +85,7 @@ import { Vue, Component, Provide } from 'vue-property-decorator';
 })
 export default class Contrast extends Vue {
     @Provide() imgs: string = require('@/static/img/JC.png');
+    @Provide() z18n:any = i18n.t('contrast')
 
     nativeTo(url: string): void {
         uni.navigateTo({ url });
@@ -93,6 +95,7 @@ export default class Contrast extends Vue {
 
 <style lang="scss" scoped>
 .Contrast {
+    padding-bottom: 70rpx;
     .li,
     .li1,
     .li2 {
