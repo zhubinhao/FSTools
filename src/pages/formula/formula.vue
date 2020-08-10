@@ -6,6 +6,9 @@
     </view>
     <u-t2 v-if="type==='t2'"></u-t2>
     <u-t4 v-if="type==='t4'"></u-t4>
+    <u-t5 v-if="type==='t5'"></u-t5>
+    <u-t6 v-if="type==='t6'"></u-t6>
+    <u-t7 v-if="type==='t7'"></u-t7>
 
     <u-left @setData="setData" ref="leftRef"></u-left>
   </view>
@@ -16,19 +19,24 @@ import { Vue, Component, Provide } from "vue-property-decorator";
 import Left from "@/component/left.vue";
 import T2 from "@/component/t2.vue"
 import T4 from "@/component/t4.vue"
+import T5 from "@/component/t5.vue"
+import T6 from "@/component/t6.vue"
+import T7 from "@/component/t7.vue"
 
 @Component({
   name: "Formula",
   components: {
     "u-left": Left,
     "u-t2": T2,
-    "u-t4": T4
-
+    "u-t4": T4,
+    "u-t5": T5,
+    "u-t6": T6,
+    "u-t7": T7,
   }
 })
 export default class Formula extends Vue {
-  @Provide() title: string ="相位(LTH)"
-  @Provide() type: string = "t4"
+  @Provide() title: string ="截至频率(Fco)"
+  @Provide() type: string = "t7"
 
   setData(obj: any): void {
     this.title = obj.title

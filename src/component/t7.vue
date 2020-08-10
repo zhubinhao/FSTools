@@ -35,7 +35,7 @@ import { getBaseLog } from "@/utils/api";
   components: {}
 })
 export default class T2 extends Vue {
-  @Provide() z18n: any = i18n.t("T2");
+  @Provide() z18n: any = i18n.t("T7");
   @Provide() array: Array<any> = ["7根绞合导体", "19根绞合导体", "单芯"];
   @Provide() id: string | null = null;
   @Provide() arr: Array<any> = [0.93, 0.97, 1];
@@ -56,7 +56,8 @@ export default class T2 extends Vue {
     }
   }
   getData(): void {
-    this.Val = ((138 * this.obj.Vp * getBaseLog((this.obj.D / this.obj.d) * this.obj.x))/100).toFixed(2);
+    const {Vp,D,d,x} = this.obj
+    this.Val = ((190*Vp/100)/(d*x+Number(D))).toFixed(2);
   }
   bindPickerChange(e: any): void {
     const { value } = e.detail;
