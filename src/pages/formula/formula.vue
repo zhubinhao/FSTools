@@ -5,6 +5,8 @@
       <text>{{title}}</text>
     </view>
     <u-t2 v-if="type==='t2'"></u-t2>
+    <u-t4 v-if="type==='t4'"></u-t4>
+
     <u-left @setData="setData" ref="leftRef"></u-left>
   </view>
 </template>
@@ -13,17 +15,20 @@
 import { Vue, Component, Provide } from "vue-property-decorator";
 import Left from "@/component/left.vue";
 import T2 from "@/component/t2.vue"
+import T4 from "@/component/t4.vue"
 
 @Component({
   name: "Formula",
   components: {
     "u-left": Left,
-    "u-t2": T2
+    "u-t2": T2,
+    "u-t4": T4
+
   }
 })
 export default class Formula extends Vue {
-  @Provide() title: string ="阻抗(Zo)"
-  @Provide() type: string = "t2"
+  @Provide() title: string ="相位(LTH)"
+  @Provide() type: string = "t4"
 
   setData(obj: any): void {
     this.title = obj.title

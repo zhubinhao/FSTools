@@ -90,6 +90,8 @@ export default class T2 extends Vue {
             text-align: center;
             font-size: 30rpx;
             margin-right: 20rpx;
+            height: 60rpx;
+
         }
     }
 }
