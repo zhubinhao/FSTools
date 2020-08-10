@@ -4,6 +4,7 @@
       <text class="iconfont icon-gengduo" @click="open"></text>
       <text>{{title}}</text>
     </view>
+    <u-t2 v-if="type==='t2'"></u-t2>
     <u-left @setData="setData" ref="leftRef"></u-left>
   </view>
 </template>
@@ -11,16 +12,18 @@
 <script lang="ts">
 import { Vue, Component, Provide } from "vue-property-decorator";
 import Left from "@/component/left.vue";
+import T2 from "@/component/t2.vue"
 
 @Component({
   name: "Formula",
   components: {
-    "u-left": Left
+    "u-left": Left,
+    "u-t2": T2
   }
 })
 export default class Formula extends Vue {
-  @Provide() title: string ="插入损耗(IL)"
-  @Provide() type: string = "t1"
+  @Provide() title: string ="阻抗(Zo)"
+  @Provide() type: string = "t2"
 
   setData(obj: any): void {
     this.title = obj.title
