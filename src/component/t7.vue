@@ -21,7 +21,7 @@
     </view>
     <view class="li">
       <text class="title">{{z18n.t5}}:</text>
-      <text class="title">{{Val||z18n.msg3}}</text>0hms
+      <text class="title">{{Val||z18n.msg3}}</text>GHz
     </view>
   </view>
 </template>
