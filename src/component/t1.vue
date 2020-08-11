@@ -2,32 +2,32 @@
     <view class="T1">
          <view class="li">
             <text class="title">{{z18n.t1}}:</text>
-            <picker @change="bindPickerChange" :value="index" :range="array">
+            <picker @change="bindPickerChange1" :value="index" :range="array">
                 <view class="uni-input">{{array[index]}}</view>
                 <input type="number" :placeholder="z18n.msg1" :value="array[id]" disabled />
             </picker>
         </view>
         <view class="li">
             <text class="title">{{z18n.t2}}:</text>
-            <input type="number" :placeholder="z18n.msg2" v-model="obj.D" @confirm="confirm" @input="click($event, 'D')" /> GHZ
+            <input type="number" :placeholder="z18n.msg2" v-model="obj.F" @confirm="confirm" @input="click($event, 'F')" /> GHZ
         </view>
          <view class="li">
             <text class="title">{{z18n.t3}}:</text>
-            <picker @change="bindPickerChange" :value="index" :range="array">
+            <picker @change="bindPickerChange($event,'Lid')" :value="index" :range="array">
                 <view class="uni-input">{{array[index]}}</view>
-                <input type="number" :placeholder="z18n.msg1" :value="array[id]" disabled />
+                <input type="number" :placeholder="z18n.msg1" :value="array[Lid]" disabled />
             </picker>
         </view>
         <view class="li">
             <text class="title">{{z18n.t4}}:</text>
-            <picker @change="bindPickerChange" :value="index" :range="array">
+            <picker @change="bindPickerChange($event,'Rid')" :value="index" :range="array">
                 <view class="uni-input">{{array[index]}}</view>
-                <input type="number" :placeholder="z18n.msg1" :value="array[id]" disabled />
+                <input type="number" :placeholder="z18n.msg1" :value="array[Rid]" disabled />
             </picker>
         </view>
         <view class="li">
             <text class="title">{{z18n.t5}}:</text>
-            <input type="number" :placeholder="z18n.msg2" v-model="obj.D" @confirm="confirm" @input="click($event, 'D')" /> M
+            <input type="number" :placeholder="z18n.msg2" v-model="obj.M" @confirm="confirm" @input="click($event, 'M')" /> M
         </view>
         <view class="li">
             <text class="title">{{z18n.t6}}:</text>
@@ -46,15 +46,16 @@ import { getBaseLog, float } from '@/utils/api';
 })
 export default class T1 extends Vue {
     @Provide() z18n: any = i18n.t('T1');
-    @Provide() array: Array<any> = ['7根绞合导体', '19根绞合导体', '单芯'];
-    @Provide() id: string | null = null;
+    @Provide() array: Array<any> = ['不选择', '0.06'];
+    @Provide() Lid: string | null = null;
+    @Provide() Rid: string | null = null;
     @Provide() arr: Array<any> = [0.93, 0.97, 1];
     @Provide() Val: string | number = '';
     @Provide() obj: any = {
-        Vp: '',
-        D: '',
-        d: '',
-        x: '',
+        F: '',
+        M: '',
+        L: '',
+        R: '',
     };
 
     // @Watch('obj', { deep: true })
@@ -75,18 +76,24 @@ export default class T1 extends Vue {
         }
     }
     getData(): void {
-        this.Val = (
-            (138 *
-                this.obj.Vp *
-                getBaseLog((this.obj.D / this.obj.d) * this.obj.x)) /
-            100
-        ).toFixed(2);
+        // this.Val
     }
-    bindPickerChange(e: any): void {
+    bindPickerChange(e: any,key:string): void {
         const { value } = e.detail;
-        this.id = value;
-        this.obj.x = this.arr[value];
-        this.confirm();
+        (this as any)[key] =value 
+        if(key === 'Rid'){}
+
+        if(key === 'Rid'){}
+
+        let k1 = 1.9758324
+		let k2 = 0.0012207
+		let f = 67
+		let g = f*1000 
+		console.log(g)
+		let v = (k1*Math.sqrt(g) + k2*(f*1000))/100*100 + 0.06*Math.sqrt(f) +0.06*Math.sqrt(f)
+		console.log(v)
+
+        
     }
 }
 </script>
