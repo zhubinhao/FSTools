@@ -49,51 +49,40 @@ export default class T1 extends Vue {
     @Provide() array: Array<any> = ['不选择', '0.06'];
     @Provide() Lid: string | null = null;
     @Provide() Rid: string | null = null;
+    @Provide() K: string | null = '1';
     @Provide() arr: Array<any> = [0.93, 0.97, 1];
     @Provide() Val: string | number = '';
     @Provide() obj: any = {
         F: '',
         M: '',
-        L: '',
-        R: '',
     };
-
-    // @Watch('obj', { deep: true })
-    // hander(a: any) {
-    //     if (this.obj.Vp && this.obj.D && this.obj.d && this.obj.x) {
-    //     } else {
-    //         this.Val = '';
-    //     }
-    // }
     click(e: any, key: string): void {
         float(e, key, this);
     }
     confirm(): void {
-        if (this.obj.Vp && this.obj.D && this.obj.d && this.obj.x) {
+        if (this.obj.F && this.obj.M && this.K ) {
             this.getData();
         } else {
             this.Val = '';
         }
     }
     getData(): void {
-        // this.Val
+        let k1 = 1.9758324
+		let k2 = 0.0012207
+		let {F:f,M} = this.obj
+        let g = f*1000 
+        let Lid = this.Lid === '1'? 0.06:0
+        let Rid = this.Rid === '1'? 0.06:0
+		this.Val = ((k1*Math.sqrt(g) + k2*(f*1000))/100*M + Lid*Math.sqrt(f) +Rid*Math.sqrt(f)).toFixed(2)
+        
+    }
+    bindPickerChange1(): void{
+
     }
     bindPickerChange(e: any,key:string): void {
         const { value } = e.detail;
         (this as any)[key] =value 
-        if(key === 'Rid'){}
-
-        if(key === 'Rid'){}
-
-        let k1 = 1.9758324
-		let k2 = 0.0012207
-		let f = 67
-		let g = f*1000 
-		console.log(g)
-		let v = (k1*Math.sqrt(g) + k2*(f*1000))/100*100 + 0.06*Math.sqrt(f) +0.06*Math.sqrt(f)
-		console.log(v)
-
-        
+        this.confirm()
     }
 }
 </script>
