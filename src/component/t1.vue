@@ -1,16 +1,22 @@
 <template>
-    <view class="T7">
-        <view class="li">
+    <view class="T1">
+         <view class="li">
             <text class="title">{{z18n.t1}}:</text>
-            <input type="number" :placeholder="z18n.msg2" v-model="obj.Vp" @confirm="confirm" @input="click($event, 'Vp')" /> %
+            <picker @change="bindPickerChange" :value="index" :range="array">
+                <view class="uni-input">{{array[index]}}</view>
+                <input type="number" :placeholder="z18n.msg1" :value="array[id]" disabled />
+            </picker>
         </view>
         <view class="li">
             <text class="title">{{z18n.t2}}:</text>
-            <input type="number" :placeholder="z18n.msg2" v-model="obj.D" @confirm="confirm" @input="click($event, 'D')" /> mm
+            <input type="number" :placeholder="z18n.msg2" v-model="obj.D" @confirm="confirm" @input="click($event, 'D')" /> GHZ
         </view>
-        <view class="li">
+         <view class="li">
             <text class="title">{{z18n.t3}}:</text>
-            <input type="number" :placeholder="z18n.msg2" v-model="obj.d " @confirm="confirm" @input="click($event, 'd')" /> mm
+            <picker @change="bindPickerChange" :value="index" :range="array">
+                <view class="uni-input">{{array[index]}}</view>
+                <input type="number" :placeholder="z18n.msg1" :value="array[id]" disabled />
+            </picker>
         </view>
         <view class="li">
             <text class="title">{{z18n.t4}}:</text>
@@ -21,7 +27,11 @@
         </view>
         <view class="li">
             <text class="title">{{z18n.t5}}:</text>
-            <text class="title">{{Val||z18n.msg3}}</text>GHz
+            <input type="number" :placeholder="z18n.msg2" v-model="obj.D" @confirm="confirm" @input="click($event, 'D')" /> M
+        </view>
+        <view class="li">
+            <text class="title">{{z18n.t6}}:</text>
+            <text class="title">{{Val||z18n.msg3}}</text> dB
         </view>
     </view>
 </template>
@@ -29,13 +39,13 @@
 <script lang="ts">
 import { Vue, Component, Provide, Watch } from 'vue-property-decorator';
 import { i18n } from '@/utils/i18n';
-import { float } from '@/utils/api';
+import { getBaseLog, float } from '@/utils/api';
 @Component({
-    name: 'T7',
+    name: 'T1',
     components: {},
 })
-export default class T7 extends Vue {
-    @Provide() z18n: any = i18n.t('T7');
+export default class T1 extends Vue {
+    @Provide() z18n: any = i18n.t('T1');
     @Provide() array: Array<any> = ['7根绞合导体', '19根绞合导体', '单芯'];
     @Provide() id: string | null = null;
     @Provide() arr: Array<any> = [0.93, 0.97, 1];
@@ -60,13 +70,17 @@ export default class T7 extends Vue {
     confirm(): void {
         if (this.obj.Vp && this.obj.D && this.obj.d && this.obj.x) {
             this.getData();
-        }else{
+        } else {
             this.Val = '';
         }
     }
     getData(): void {
-        const { Vp, D, d, x } = this.obj;
-        this.Val = ((190 * Vp) / 100 / (d * x + Number(D))).toFixed(2);
+        this.Val = (
+            (138 *
+                this.obj.Vp *
+                getBaseLog((this.obj.D / this.obj.d) * this.obj.x)) /
+            100
+        ).toFixed(2);
     }
     bindPickerChange(e: any): void {
         const { value } = e.detail;
@@ -78,7 +92,7 @@ export default class T7 extends Vue {
 </script>
 
 <style lang="scss" scoped>
-.T7 {
+.T1 {
     padding: 60rpx 30rpx 0 90rpx;
     .li {
         display: flex;
