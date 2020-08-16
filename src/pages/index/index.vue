@@ -3,15 +3,16 @@
         <view class='banner'>
            <image :src="bannerImg" mode="aspectFill"></image>
         </view>
-        {{title}}
         <u-list></u-list>
     </view>
 </template>
 
 <script lang="ts">
 import { Vue, Component, Provide } from 'vue-property-decorator';
+import { State } from 'vuex-class'
 import List from '@/component/list.vue'
 import {i18n} from '@/utils/i18n'
+import {http} from '@/utils/http'
 
 @Component({
     name: 'Index',
@@ -22,7 +23,20 @@ import {i18n} from '@/utils/i18n'
 export default class Index extends Vue {
     @Provide() bannerImg:string = require("@/static/img/banner.jpg")
     @Provide() title:any = i18n.t('user.name')
-    public $refs!: {};
+    @State token!:string
+
+    get tokens(){
+        this.token&&this.getData()
+        return this.token
+    }
+    async getData(){
+        const token = uni.getStorageSync('token')
+        const ad = await http({url:'/JY/Home_Poster',data:{token}}).then((res:any)=>res.data)
+        const product = await http({url:'/JY/Home_Product',data:{token}}).then((res:any)=>res.data)
+       
+       console.log(ad,product)
+    }
+
 }
 </script>
 

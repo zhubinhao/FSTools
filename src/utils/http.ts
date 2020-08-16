@@ -1,10 +1,9 @@
 import {httpUrl} from './path'
 export const http =function(obj:any){
-	console.log(httpUrl+obj.url)
 	return new Promise((resolve,reject) => uni.request({
 			url: httpUrl+obj.url, 
 			data: obj.data||{},
-			method:obj.method||"GET",
+			method:obj.method||"POST",
 			header: {
 				"content-type": "application/json",
 			},

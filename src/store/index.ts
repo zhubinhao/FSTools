@@ -6,14 +6,15 @@ import {http} from '../utils/http'
 Vue.use(Vuex)
 
 const state: any = {
-	openid:''
+	token:uni.getStorageSync('token')||''
 }; 
 const getters: GetterTree<any, any> = {
   
 }
 const mutations: MutationTree<any> = {
-	setOpenID(state:any,openid:string){
-		state.openid = openid
+	setToken(state:any,token:string){
+		uni.setStorageSync('token',token)
+		state.token = token
 	}
 }; 
 const actions: ActionTree<any, any> = {
