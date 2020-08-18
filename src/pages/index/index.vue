@@ -31,8 +31,8 @@ export default class Index extends Vue {
     }
     async getData(){
         const token = uni.getStorageSync('token')
-        const ad = await http({url:'/JY/Home_Poster',data:{token}}).then((res:any)=>res.data)
-        const product = await http({url:'/JY/Home_Product',data:{token}}).then((res:any)=>res.data)
+        const ad = await http({url:'/JY/Home_Poster',data:{token,ench:1}}).then((res:any)=>res.data)
+        const product = await http({url:'/JY/Home_Product',data:{token,ench:1}}).then((res:any)=>res.data)
        
        console.log(ad,product)
     }
