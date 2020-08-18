@@ -84,7 +84,6 @@ import {i18n} from '@/utils/i18n'
     components: {},
 })
 export default class Contrast extends Vue {
-    @Provide() imgs: string = require('@/static/img/JC.png');
     @Provide() z18n:any = i18n.t('contrast')
 
     nativeTo(url: string): void {

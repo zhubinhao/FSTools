@@ -1,9 +1,14 @@
 <template>
     <view class="content">
-        <view class='banner'>
-           <image :src="bannerImg" mode="aspectFill"></image>
+        
+         <swiper class="swiper" autoplay circular indicator-dots>
+            <swiper-item class='banner' v-for="item in adList" :key="item.h_id">
+                <image :src="item.h_image" mode="aspectFill" class="adImg"></image>
+            </swiper-item>
+        </swiper>
+        <view v-for="item in productList" :key="item.sty_id">
+          <u-list :inner="item"></u-list>
         </view>
-        <u-list></u-list>
     </view>
 </template>
 
@@ -13,6 +18,7 @@ import { State } from 'vuex-class'
 import List from '@/component/list.vue'
 import {i18n} from '@/utils/i18n'
 import {http} from '@/utils/http'
+import {imgUrl} from '@/utils/path'
 
 @Component({
     name: 'Index',
@@ -21,8 +27,10 @@ import {http} from '@/utils/http'
     },
 })
 export default class Index extends Vue {
-    @Provide() bannerImg:string = require("@/static/img/banner.jpg")
     @Provide() title:any = i18n.t('user.name')
+    @Provide() adList:Array<any> = []
+    @Provide() productList:Array<any> = []
+
     @State token!:string
 
     get tokens(){
@@ -34,21 +42,36 @@ export default class Index extends Vue {
         const ad = await http({url:'/JY/Home_Poster',data:{token,ench:1}}).then((res:any)=>res.data)
         const product = await http({url:'/JY/Home_Product',data:{token,ench:1}}).then((res:any)=>res.data)
        
-       console.log(ad,product)
+       ad.map((res:any)=>{
+           res.h_image = imgUrl+res.h_image 
+       })
+       product.map((res:any)=>{
+           res.sty_image = imgUrl+res.sty_image 
+       })
+       this.adList = ad
+       this.productList = product
+
+       console.log(ad)
+       console.log(product)
     }
 
 }
 </script>
 
 <style lang="scss" scope>
+.swiper{
+  height: 300rpx;
+
 .banner{
-  height: 400rpx;
+  height: 300rpx;
   width: 750rpx;
   overflow: hidden;
-  image{
-    height: 400rpx;
+  .adImg{
+    height: 300rpx;
     width: 750rpx;
     background: #f6f6f6
   }
 }
+}
+
 </style>

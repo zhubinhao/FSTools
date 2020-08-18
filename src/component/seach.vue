@@ -30,7 +30,6 @@ import { i18n } from '@/utils/i18n';
     components: {},
 })
 export default class Seach extends Vue {
-    @Provide() imgs: string = require('@/static/img/JC.png');
     @Provide() z18n: any = i18n.t('seach');
 
     nativeTo(url: string): void {
