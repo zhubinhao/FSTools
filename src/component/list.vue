@@ -1,6 +1,6 @@
 <template>
   <view class="content">
-      <view class="com_list" @click="nativeTo('/pages/index/details')">
+      <view class="com_list" @click="nativeTo(`/pages/index/details?id=${inner.sty_id}`)">
       <image :src='inner.sty_image'></image>
       <view>
         <text>{{inner.sty_style}}</text>
@@ -50,6 +50,8 @@ export default class List extends Vue {
   }
   view text{
     text-align: center;
+     font-weight: 500;
+    color: rgba(51, 51, 51, 1);
   }
   .introduce{
     font-size: 28rpx;
@@ -60,6 +62,8 @@ export default class List extends Vue {
     overflow: hidden;
     line-height: 36rpx;
     height: 106rpx;
+    font-weight: 400;
+    color: rgba(51, 51, 51, 1);
   }
 }
 

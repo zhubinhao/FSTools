@@ -1,5 +1,11 @@
 import {httpUrl} from './path'
 export const http =function(obj:any){
+	const token = uni.getStorageSync('token')||'';
+	obj.data = obj.data?obj.data:{}
+	obj.data.ench = '1';
+	if(token){
+		obj.data.token = token
+	}
 	return new Promise((resolve,reject) => uni.request({
 			url: httpUrl+obj.url, 
 			data: obj.data||{},

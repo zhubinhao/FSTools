@@ -1,8 +1,8 @@
 <template>
     <view class="Project">
         <view class='header'>
-            <text :class='{active:type===0}' @click="type=0">电缆比较</text>
-            <text :class='{active:type===1}' @click="type=1">参数选电缆</text>
+            <text :class='{active:type===0}' @click="type=0">{{z18n.t1}}</text>
+            <text :class='{active:type===1}' @click="type=1">{{z18n.t2}}</text>
         </view>
         <view>
             <swiper :style='{height:screenHeight}' :current="type" @change="changeType">
@@ -28,7 +28,7 @@
 import { Vue, Component, Provide } from 'vue-property-decorator';
 import seach from '@/component/seach.vue'
 import contrast from '@/component/contrast.vue'
-
+import { i18n } from '@/utils/i18n';
 
 @Component({
     name: 'Project',
@@ -40,6 +40,7 @@ import contrast from '@/component/contrast.vue'
 export default class Project extends Vue {
     @Provide() type: number = 0;
     @Provide() screenHeight: string = '';
+    @Provide() z18n: any = i18n.t('project');
 
     onLoad() {
         this.screenHeight = uni.getSystemInfoSync().windowHeight + 'px';

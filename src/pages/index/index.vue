@@ -1,77 +1,75 @@
 <template>
     <view class="content">
-        
-         <swiper class="swiper" autoplay circular indicator-dots>
+        <swiper class="swiper" autoplay circular indicator-dots>
             <swiper-item class='banner' v-for="item in adList" :key="item.h_id">
                 <image :src="item.h_image" mode="aspectFill" class="adImg"></image>
             </swiper-item>
         </swiper>
         <view v-for="item in productList" :key="item.sty_id">
-          <u-list :inner="item"></u-list>
+            <u-list :inner="item"></u-list>
         </view>
     </view>
 </template>
 
 <script lang="ts">
 import { Vue, Component, Provide } from 'vue-property-decorator';
-import { State } from 'vuex-class'
-import List from '@/component/list.vue'
-import {i18n} from '@/utils/i18n'
-import {http} from '@/utils/http'
-import {imgUrl} from '@/utils/path'
+import { State } from 'vuex-class';
+import List from '@/component/list.vue';
+import { i18n } from '@/utils/i18n';
+import { http } from '@/utils/http';
+import { imgUrl } from '@/utils/path';
 
 @Component({
     name: 'Index',
     components: {
-        'u-list': List
+        'u-list': List,
     },
 })
 export default class Index extends Vue {
-    @Provide() title:any = i18n.t('user.name')
-    @Provide() adList:Array<any> = []
-    @Provide() productList:Array<any> = []
+    @Provide() title: any = i18n.t('user.name');
+    @Provide() adList: Array<any> = [];
+    @Provide() productList: Array<any> = [];
 
-    @State token!:string
+    @State token!: string;
 
-    get tokens(){
-        this.token&&this.getData()
-        return this.token
+    get tokens() {
+        this.token && this.getData();
+        return this.token;
     }
-    async getData(){
-        const token = uni.getStorageSync('token')
-        const ad = await http({url:'/JY/Home_Poster',data:{token,ench:1}}).then((res:any)=>res.data)
-        const product = await http({url:'/JY/Home_Product',data:{token,ench:1}}).then((res:any)=>res.data)
-       
-       ad.map((res:any)=>{
-           res.h_image = imgUrl+res.h_image 
-       })
-       product.map((res:any)=>{
-           res.sty_image = imgUrl+res.sty_image 
-       })
-       this.adList = ad
-       this.productList = product
+    async getData() {
+        const data = {}
+        
+        const ad = await http({url: '/JY/Home_Poster'}).then((res: any) => res.data);
+        const product = await http({url: '/JY/Home_Product'}).then((res: any) => res.data);
 
-       console.log(ad)
-       console.log(product)
+        ad.map((res: any) => {
+            res.h_image = imgUrl + res.h_image;
+        });
+        product.map((res: any) => {
+            res.sty_image = imgUrl + res.sty_image;
+        });
+        this.adList = ad;
+        this.productList = product;
+
+        console.log(ad);
+        console.log(product);
     }
-
 }
 </script>
 
 <style lang="scss" scope>
-.swiper{
-  height: 300rpx;
-
-.banner{
-  height: 300rpx;
-  width: 750rpx;
-  overflow: hidden;
-  .adImg{
+.swiper {
     height: 300rpx;
-    width: 750rpx;
-    background: #f6f6f6
-  }
-}
-}
 
+    .banner {
+        height: 300rpx;
+        width: 750rpx;
+        overflow: hidden;
+        .adImg {
+            height: 300rpx;
+            width: 750rpx;
+            background: #f6f6f6;
+        }
+    }
+}
 </style>
