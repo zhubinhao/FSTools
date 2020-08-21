@@ -1,5 +1,5 @@
 <template>
-  <view class="Left" v-if="show" @click.stop="close">
+  <view class="Left" v-if="show" @click.stop="close" :style="{top:barHeight+'px'}">
       <view class="content" @click.stop="pro">
           <block v-for="(item,key) in z18n" :key="key">
             <view class="list" @click="choose(key,item)" :class="{active:key===active}">{{item}}</view>
@@ -11,6 +11,7 @@
 <script lang="ts">
 import { Vue, Component, Provide } from 'vue-property-decorator';
 import {i18n} from '@/utils/i18n'
+import { State } from 'vuex-class';
 
 @Component({
     name: 'Left',
@@ -20,6 +21,8 @@ export default class Left extends Vue {
     @Provide() show:boolean = false;
     @Provide() z18n:any = i18n.t('left')
     @Provide() active:string = 't1'
+    
+    @State barHeight!:number;
 
     open():void{
         this.show = true

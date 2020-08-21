@@ -1,19 +1,20 @@
 <template>
-    <view class="Project">
-        <view class='header'>
+    <view class="Project"  >
+        <bar :title="title" />
+        <view class='header' :style="{top:barHeight+'px'}">
             <text :class='{active:type===0}' @click="type=0">{{z18n.t1}}</text>
             <text :class='{active:type===1}' @click="type=1">{{z18n.t2}}</text>
         </view>
         <view>
             <swiper :style='{height:screenHeight}' :current="type" @change="changeType">
                 <swiper-item>
-                    <scroll-view scroll-y :style='{height:screenHeight}' class="box">
+                    <scroll-view scroll-y :style='{height:screenHeight,paddingTop:barHeight+"px"}' class="box">
                         <!-- 电缆比较 -->
                         <contrast ></contrast>
                     </scroll-view>
                 </swiper-item>
                 <swiper-item>
-                    <scroll-view scroll-y :style='{height:screenHeight}' class="box">
+                    <scroll-view scroll-y :style='{height:screenHeight,paddingTop:barHeight+"px"}' class="box">
                         <!-- 参数选电缆 -->
                         <seach ></seach>
                     </scroll-view>
@@ -26,6 +27,8 @@
 
 <script lang="ts">
 import { Vue, Component, Provide } from 'vue-property-decorator';
+import bar from '@/component/bar.vue'
+import { State } from 'vuex-class';
 import seach from '@/component/seach.vue'
 import contrast from '@/component/contrast.vue'
 import { i18n } from '@/utils/i18n';
@@ -34,13 +37,17 @@ import { i18n } from '@/utils/i18n';
     name: 'Project',
     components: {
 		seach,
-		contrast
+        contrast,
+        bar
 	},
 })
 export default class Project extends Vue {
     @Provide() type: number = 0;
     @Provide() screenHeight: string = '';
     @Provide() z18n: any = i18n.t('project');
+    @Provide() title: any = i18n.t('bar.t2');
+
+    @State barHeight!:number;
 
     onLoad() {
         this.screenHeight = uni.getSystemInfoSync().windowHeight + 'px';
@@ -54,11 +61,11 @@ export default class Project extends Vue {
 
 <style lang="scss" scope>
 .Project {
+    position: relative;
     .header {
         position: absolute;
         left: 0;
         right: 0;
-        top: 0;
         height: 60rpx;
         z-index: 1;
         background: white;

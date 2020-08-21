@@ -1,6 +1,7 @@
-<template>
-  <view class="Formula">
-    <view class="head">
+<template> 
+  <view class="Formula" >
+    <bar :title="titles" />
+    <view class="head" :style="{paddingTop:barHeight+'px'}">
       <text class="iconfont icon-gengduo" @click="open"></text>
       <text>{{title}}</text>
     </view>
@@ -19,6 +20,8 @@
 
 <script lang="ts">
 import { Vue, Component, Provide } from "vue-property-decorator";
+import {State} from "vuex-class"
+import bar from '@/component/bar.vue'
 import Left from "@/component/left.vue";
 import T1 from "@/component/t1.vue"
 import T2 from "@/component/t2.vue"
@@ -29,6 +32,7 @@ import T6 from "@/component/t6.vue"
 import T7 from "@/component/t7.vue"
 import T8 from "@/component/t8.vue"
 import T9 from "@/component/t9.vue"
+import { i18n } from '@/utils/i18n';
 
 @Component({
   name: "Formula",
@@ -43,11 +47,15 @@ import T9 from "@/component/t9.vue"
     "u-t7": T7,
     "u-t8": T8,
     "u-t9": T9,
+    bar
   }
 })
 export default class Formula extends Vue {
   @Provide() title: string ="插入损耗(IL)"
   @Provide() type: string = "t1"
+    @Provide() titles: any = i18n.t('bar.t3');
+
+  @State barHeight!:number;
 
   setData(obj: any): void {
     this.title = obj.title

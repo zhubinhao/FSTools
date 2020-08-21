@@ -6,7 +6,8 @@ import {http} from '../utils/http'
 Vue.use(Vuex)
 
 const state: any = {
-	token:uni.getStorageSync('token')||''
+	token:uni.getStorageSync('token')||'',
+	barHeight:uni.getStorageSync('barHeight'),
 }; 
 const getters: GetterTree<any, any> = {
   
@@ -15,6 +16,10 @@ const mutations: MutationTree<any> = {
 	setToken(state:any,token:string){
 		uni.setStorageSync('token',token)
 		state.token = token
+	},
+	setBarHeight(state:any,barHeight:number){
+		uni.setStorageSync('barHeight',barHeight)
+		state.barHeight = barHeight
 	}
 }; 
 const actions: ActionTree<any, any> = {

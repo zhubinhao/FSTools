@@ -1,5 +1,6 @@
 <template>
-    <view class="content">
+    <view class="content" :style="{paddingTop:barHeight+'px'}" >
+        <bar :title="title" />
         <swiper class="swiper" autoplay circular indicator-dots>
             <swiper-item class='banner' v-for="item in adList" :key="item.h_id">
                 <image :src="item.h_image" mode="aspectFill" class="adImg"></image>
@@ -13,6 +14,7 @@
 
 <script lang="ts">
 import { Vue, Component, Provide } from 'vue-property-decorator';
+import bar from '@/component/bar.vue'
 import { State } from 'vuex-class';
 import List from '@/component/list.vue';
 import { i18n } from '@/utils/i18n';
@@ -23,14 +25,16 @@ import { imgUrl } from '@/utils/path';
     name: 'Index',
     components: {
         'u-list': List,
+         bar
     },
 })
 export default class Index extends Vue {
-    @Provide() title: any = i18n.t('user.name');
+    @Provide() title: any = i18n.t('bar.t1');
     @Provide() adList: Array<any> = [];
     @Provide() productList: Array<any> = [];
 
     @State token!: string;
+    @State barHeight!:number;
 
     get tokens() {
         this.token && this.getData();

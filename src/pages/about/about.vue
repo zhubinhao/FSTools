@@ -1,5 +1,6 @@
 <template>
-    <view class="About">
+    <view class="About" :style="{paddingTop:barHeight+'px'}">
+        <bar :title="title" />
         <image :src='info.comp_image' mode="widthFix"></image>
         <view class="title">{{info.comp_name}}</view>
         <view class="content" v-html="info.comp_remark"></view>
@@ -15,17 +16,22 @@
 
 <script lang="ts">
 import { Vue, Component, Provide } from 'vue-property-decorator';
+import {State} from "vuex-class"
+import bar from '@/component/bar.vue'
 import { http } from '@/utils/http';
 import { imgUrl } from '@/utils/path';
 import { i18n } from '@/utils/i18n';
 
+
 @Component({
     name: 'About',
-    components: {},
+    components: {bar},
 })
 export default class Index extends Vue {
     @Provide() info: any = {};
     @Provide() z18n: any = i18n.t('about');
+    @Provide() title: any = i18n.t('bar.t4');
+    @State barHeight!:number;
 
     mounted() {
         this.getData();

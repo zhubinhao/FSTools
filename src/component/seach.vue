@@ -40,7 +40,7 @@ export default class Seach extends Vue {
 
 <style lang="scss" scoped>
 .Seach {
-    padding-bottom: 70rpx;
+    padding-bottom: 200rpx;
     .li {
         display: flex;
         justify-content: flex-start;

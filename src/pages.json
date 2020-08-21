@@ -3,7 +3,26 @@
 		{
 			"path": "pages/index/index",
 			"style": {
-				"navigationBarTitleText": "产品中心"
+				"navigationBarTitleText": "产品中心",
+				"app-plus": {
+					"titleNView": {
+							"buttons": [
+									{
+											"text": "\ue670",
+											"fontSrc": "/static/iconfont.ttf",
+											"fontSize": "22px",
+											"float": "left"
+									},
+									{
+											"text": "\ue62c",
+											"fontSrc": "/static/iconfont.ttf",
+											"fontSize": "22px"
+
+									}
+							]
+						}
+						
+					}
 			}
 		},
 		{
@@ -35,7 +54,8 @@
 		"backgroundTextStyle": "light",
 		"navigationBarBackgroundColor": "#fff",
 		"navigationBarTitleText": "军友射频",
-		"navigationBarTextStyle": "black"
+		"navigationBarTextStyle": "black",
+		"navigationStyle": "custom"
 	},
 	"tabBar": {
 		"color": "#8a8a8a",
