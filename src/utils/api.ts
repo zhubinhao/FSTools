@@ -1,3 +1,4 @@
+import { http } from "@/utils/http";
 
 // x 为底 y 的对数（即logx y）：
 export const getBaseLog = function (y: number, x: number = 10) {
@@ -21,3 +22,18 @@ export const float = function(e:any,key:string,_this:any){
 		_this.obj = obj;
 	});
 }
+
+export const getOpenIds = function(){
+	return new Promise((resolve,reject) => uni.login({
+		provider: "weixin",
+		success: function(loginRes) {
+			http({ url: "/JY/WX_Openid",data:{code:loginRes.code}}).then(res=>{
+				resolve(res)
+			}).catch(res=>{
+				reject(res)
+			})
+		}
+	})
+	)
+}
+

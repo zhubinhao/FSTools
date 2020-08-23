@@ -9,6 +9,7 @@
         <view v-for="item in productList" :key="item.sty_id">
             <u-list :inner="item"></u-list>
         </view>
+        <!-- <button open-type="getUserInfo" @getuserinfo="getuserinfo">授权</button> -->
     </view>
 </template>
 
@@ -40,9 +41,11 @@ export default class Index extends Vue {
         this.token && this.getData();
         return this.token;
     }
+    // getuserinfo(e:any){
+    //     console.log(e)
+    // }
     async getData() {
         const data = {}
-        
         const ad = await http({url: '/JY/Home_Poster'}).then((res: any) => res.data);
         const product = await http({url: '/JY/Home_Product'}).then((res: any) => res.data);
 
@@ -54,9 +57,12 @@ export default class Index extends Vue {
         });
         this.adList = ad;
         this.productList = product;
-
-        console.log(ad);
-        console.log(product);
+    }
+    onShareAppMessage() {
+      return {
+        title: '军友射频',
+        path: '/pages/index/index'
+      }
     }
 }
 </script>
@@ -64,7 +70,6 @@ export default class Index extends Vue {
 <style lang="scss" scope>
 .swiper {
     height: 300rpx;
-
     .banner {
         height: 300rpx;
         width: 750rpx;

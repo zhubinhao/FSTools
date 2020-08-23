@@ -36,8 +36,9 @@ export default class Details extends Vue {
     @Provide() screenHeight: string = '';
     @Provide() listData: Array<any> = [];
     @Provide() current: number = 0
-    @State barHeight!:number;
     @Provide() title: any = i18n.t('bar.t5');
+   
+    @State barHeight!:number;
 
     onLoad(option: any) {
         this.screenHeight = (uni.getSystemInfoSync().windowHeight||655)-this.barHeight + 'px';
@@ -53,7 +54,6 @@ export default class Details extends Vue {
         this.current = index
     }
     preView(url:string):void{
-        console.log(url)
         uni.previewImage({
             urls: [url],
         })
@@ -70,7 +70,6 @@ export default class Details extends Vue {
             res.prod_image = imgUrl + res.prod_image;
         });
         this.listData = require;
-        console.log(require);
     }
     async setHistory(option: any){
         const data = {
@@ -79,7 +78,7 @@ export default class Details extends Vue {
         await http({
             url: '/JY/Product_LogInfo',
             data,
-        }).then((res: any) => res.data);
+        })
 
     }
 }

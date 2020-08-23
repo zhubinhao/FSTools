@@ -60,8 +60,6 @@ export default class Formula extends Vue {
   setData(obj: any): void {
     this.title = obj.title
     this.type = obj.key
-    console.log(obj);
-    
   }
   open(): void {
     (this.$refs.leftRef as any).open();

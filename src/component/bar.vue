@@ -24,7 +24,6 @@ export default class Bar extends Vue {
     this.top = uni.getMenuButtonBoundingClientRect().top || 0;
     this.height = 5 + (uni.getMenuButtonBoundingClientRect().height || 0);
     this.$store.commit("setBarHeight", this.top + this.height);
-    console.log( uni.getMenuButtonBoundingClientRect())
     let routeArr: Array<any> = [
       "pages/index/index",
       "pages/project/project",
@@ -43,8 +42,6 @@ export default class Bar extends Vue {
     if (pages === "pages/index/index") {
       this.btnTitle = "CN/EN";
     }
-
-    console.log(pagesArr);
   }
 
   back(): void {
@@ -52,7 +49,6 @@ export default class Bar extends Vue {
       uni.navigateBack();
     }
     if (this.btnTitle === "首页") {
-      console.log(1);
       uni.switchTab({
         url: "/pages/index/index"
       });
