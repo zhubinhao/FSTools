@@ -94,7 +94,6 @@ export default class Contrast extends Vue {
 
 <style lang="scss" scoped>
 .Contrast {
-    padding-bottom: 200rpx;
     .li,
     .li1,
     .li2 {

@@ -1,7 +1,7 @@
 <template>
-    <view class="Project"  :style="{paddingTop:barHeight+'px'}">
-        <bar :title="title" seach=""/>
-        <contrast></contrast>
+    <view class="Seach"  :style="{paddingTop:barHeight+'px'}">
+        <bar :title="z18n.t2" />
+        <seach></seach>
     </view>
 </template>
 
@@ -9,26 +9,28 @@
 import { Vue, Component, Provide } from 'vue-property-decorator';
 import bar from '@/component/bar.vue';
 import { State } from 'vuex-class';
-import contrast from '@/component/contrast.vue';
+import seach from '@/component/seach.vue';
 import { i18n } from '@/utils/i18n';
 
 @Component({
-    name: 'Project',
+    name: 'Seach',
     components: {
-        contrast,
+        seach,
         bar,
     },
 })
-export default class Project extends Vue {
+export default class Seach extends Vue {
     @Provide() type: number = 0;
-    @Provide() title: any = i18n.t('bar.t2');
+    @Provide() screenHeight: string = '';
+    @Provide() z18n: any = i18n.t('project');
 
     @State barHeight!: number;
+
 }
 </script>
 
 <style lang="scss" scope>
-.Project {
+.Seach {
     position: relative;
     padding: 0 30rpx;
 }

@@ -38,10 +38,16 @@
 			}
 		},
 		{
+			"path": "pages/project/seach"
+		},
+		{
 			"path": "pages/formula/formula",
 			"style": {
 				"navigationBarTitleText": "计算公式"
 			}
+		},
+		{
+			"path": "pages/formula/details"
 		},
 		{
 			"path": "pages/about/about",

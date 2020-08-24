@@ -1,7 +1,12 @@
 <template>
   <view class="Bar" :style="{paddingTop:top+'px',height:height+'px' }">
-    <text class="back" @click="back" :class="{blue:btnTitle=='CN/EN'}">{{btnTitle}}</text>
-    {{title}}
+    <text class="back iconfont icon-seach" @click="seachs" v-if="seach"></text>
+    <text class="back blue" @click="back"  v-if="btnTitle=='CN/EN'" >{{btnTitle}}</text>
+
+    <text class="back iconfont icon-left" @click="back"  v-if="!seach&&btnTitle=='返回'"></text>
+
+    <text class="title">{{title}}</text>
+    
   </view>
 </template>
 
@@ -19,6 +24,7 @@ export default class Bar extends Vue {
   @Provide() btnTitle: string = "";
 
   @Prop() private title!: string;
+  @Prop() private seach: boolean = false;
 
   created() {
     this.top = uni.getMenuButtonBoundingClientRect().top || 0;
@@ -42,6 +48,12 @@ export default class Bar extends Vue {
     if (pages === "pages/index/index") {
       this.btnTitle = "CN/EN";
     }
+  }
+  seachs():void{
+    uni.navigateTo({
+      url:'/pages/project/seach'
+    })
+
   }
 
   back(): void {
@@ -85,9 +97,21 @@ export default class Bar extends Vue {
   .back {
     position: absolute;
     left: 30rpx;
+    width: 50rpx;
+    padding: 10rpx 0;
+
   }
   .blue {
     color: #1296db;
+  }
+  .title{
+    width: 400rpx;
+    position: relative;
+    left: -50rpx;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 }
 </style>
