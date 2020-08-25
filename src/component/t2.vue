@@ -15,8 +15,7 @@
         <view class="li">
             <text class="title">{{z18n.t4}}:</text>
             <picker @change="bindPickerChange" :value="index" :range="array">
-                <view class="uni-input">{{array[index]}}</view>
-                <input type="number" :placeholder="z18n.msg1" :value="array[id]" disabled />
+                <view class="input" :class="{gray:!array[id]}" >{{array[id]||z18n.msg1}}</view>
             </picker>
         </view>
         <view class="li">
@@ -102,6 +101,12 @@ export default class T2 extends Vue {
             font-size: 30rpx;
             margin-right: 20rpx;
             height: 60rpx;
+        }
+        .input{
+            line-height: 70rpx;
+        }
+        .gray{
+            color:gray;
         }
     }
 }

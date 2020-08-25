@@ -1,27 +1,25 @@
 <template>
     <view class="T1">
-         <view class="li">
+        <view class="li">
             <text class="title">{{z18n.t1}}:</text>
             <picker @change="bindPickerChange1" :value="index" range-key="name" :range="cableList">
-                <input type="number" :placeholder="z18n.msg1" :value="cableList[cableIndex].name" disabled />
+                <view class="input" :class="{gray:!cableList[cableIndex].name}" >{{cableList[cableIndex].name||z18n.msg1}}</view>
             </picker>
         </view>
         <view class="li">
             <text class="title">{{z18n.t2}}:</text>
             <input type="number" :placeholder="z18n.msg2" v-model="obj.F" @confirm="confirm" @input="click($event, 'F')" /> GHZ
         </view>
-         <view class="li">
+        <view class="li">
             <text class="title">{{z18n.t3}}:</text>
             <picker @change="bindPickerChange($event,'Lid')" :value="index" :range="array">
-                <view class="uni-input">{{array[index]}}</view>
-                <input type="number" :placeholder="z18n.msg1" :value="array[Lid]" disabled />
+                <view class="input" :class="{gray:!array[Lid]}" >{{array[Lid]||z18n.msg1}}</view>
             </picker>
         </view>
         <view class="li">
             <text class="title">{{z18n.t4}}:</text>
             <picker @change="bindPickerChange($event,'Rid')" :value="index" :range="array">
-                <view class="uni-input">{{array[index]}}</view>
-                <input type="number" :placeholder="z18n.msg1" :value="array[Rid]" disabled />
+                <view class="input" :class="{gray:!array[Rid]}" >{{array[Rid]||z18n.msg1}}</view>
             </picker>
         </view>
         <view class="li">
@@ -39,7 +37,7 @@
 import { Vue, Component, Provide, Watch } from 'vue-property-decorator';
 import { i18n } from '@/utils/i18n';
 import { getBaseLog, float } from '@/utils/api';
-import cable from '@/static/cable'
+import cable from '@/static/cable';
 @Component({
     name: 'T1',
     components: {},
@@ -52,9 +50,9 @@ export default class T1 extends Vue {
     @Provide() cableIndex: string | null = null;
     @Provide() k1: any = null;
     @Provide() k2: any = null;
-    
+
     @Provide() Val: string | number = '';
-    @Provide() cableList:any = cable;
+    @Provide() cableList: any = cable;
 
     @Provide() obj: any = {
         F: '',
@@ -64,32 +62,34 @@ export default class T1 extends Vue {
         float(e, key, this);
     }
     confirm(): void {
-        if (this.obj.F && this.obj.M && this.k1 ) {
+        if (this.obj.F && this.obj.M && this.k1) {
             this.getData();
         } else {
             this.Val = '';
         }
     }
     getData(): void {
-		let {F:f,M} = this.obj
-        let g = f*1000 
-        let Lid = this.Lid === '1'? 0.06:0
-        let Rid = this.Rid === '1'? 0.06:0
-		this.Val = ((this.k1*Math.sqrt(g) + this.k2*(f*1000))/100*M + Lid*Math.sqrt(f) +Rid*Math.sqrt(f)).toFixed(2)
-        
+        let { F: f, M } = this.obj;
+        let g = f * 1000;
+        let Lid = this.Lid === '1' ? 0.06 : 0;
+        let Rid = this.Rid === '1' ? 0.06 : 0;
+        this.Val = (
+            ((this.k1 * Math.sqrt(g) + this.k2 * (f * 1000)) / 100) * M +
+            Lid * Math.sqrt(f) +
+            Rid * Math.sqrt(f)
+        ).toFixed(2);
     }
-    bindPickerChange1(e:any): void{
+    bindPickerChange1(e: any): void {
         const { value } = e.detail;
-        this.cableIndex = value
-        this.k1 = this.cableList[value].k1
-        this.k2 = this.cableList[value].k2
-        this.confirm()
-
+        this.cableIndex = value;
+        this.k1 = this.cableList[value].k1;
+        this.k2 = this.cableList[value].k2;
+        this.confirm();
     }
-    bindPickerChange(e: any,key:string): void {
+    bindPickerChange(e: any, key: string): void {
         const { value } = e.detail;
-        (this as any)[key] =value 
-        this.confirm()
+        (this as any)[key] = value;
+        this.confirm();
     }
 }
 </script>
@@ -115,6 +115,12 @@ export default class T1 extends Vue {
             font-size: 30rpx;
             margin-right: 20rpx;
             height: 60rpx;
+        }
+        .input{
+            line-height: 70rpx;
+        }
+        .gray{
+            color:gray;
         }
     }
 }
