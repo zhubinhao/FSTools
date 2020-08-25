@@ -2,9 +2,8 @@
     <view class="T1">
          <view class="li">
             <text class="title">{{z18n.t1}}:</text>
-            <picker @change="bindPickerChange1" :value="index" :range="array">
-                <view class="uni-input">{{array[index]}}</view>
-                <input type="number" :placeholder="z18n.msg1" :value="array[id]" disabled />
+            <picker @change="bindPickerChange1" :value="index" range-key="name" :range="cableList">
+                <input type="number" :placeholder="z18n.msg1" :value="cableList[cableIndex].name" disabled />
             </picker>
         </view>
         <view class="li">
@@ -40,18 +39,23 @@
 import { Vue, Component, Provide, Watch } from 'vue-property-decorator';
 import { i18n } from '@/utils/i18n';
 import { getBaseLog, float } from '@/utils/api';
+import cable from '@/static/cable'
 @Component({
     name: 'T1',
     components: {},
 })
 export default class T1 extends Vue {
     @Provide() z18n: any = i18n.t('T1');
-    @Provide() array: Array<any> = ['不选择', '0.06'];
+    @Provide() array: any = i18n.t('selectArray');
     @Provide() Lid: string | null = null;
     @Provide() Rid: string | null = null;
-    @Provide() K: string | null = '1';
-    @Provide() arr: Array<any> = [0.93, 0.97, 1];
+    @Provide() cableIndex: string | null = null;
+    @Provide() k1: any = null;
+    @Provide() k2: any = null;
+    
     @Provide() Val: string | number = '';
+    @Provide() cableList:any = cable;
+
     @Provide() obj: any = {
         F: '',
         M: '',
@@ -60,23 +64,26 @@ export default class T1 extends Vue {
         float(e, key, this);
     }
     confirm(): void {
-        if (this.obj.F && this.obj.M && this.K ) {
+        if (this.obj.F && this.obj.M && this.k1 ) {
             this.getData();
         } else {
             this.Val = '';
         }
     }
     getData(): void {
-        let k1 = 1.9758324
-		let k2 = 0.0012207
 		let {F:f,M} = this.obj
         let g = f*1000 
         let Lid = this.Lid === '1'? 0.06:0
         let Rid = this.Rid === '1'? 0.06:0
-		this.Val = ((k1*Math.sqrt(g) + k2*(f*1000))/100*M + Lid*Math.sqrt(f) +Rid*Math.sqrt(f)).toFixed(2)
+		this.Val = ((this.k1*Math.sqrt(g) + this.k2*(f*1000))/100*M + Lid*Math.sqrt(f) +Rid*Math.sqrt(f)).toFixed(2)
         
     }
-    bindPickerChange1(): void{
+    bindPickerChange1(e:any): void{
+        const { value } = e.detail;
+        this.cableIndex = value
+        this.k1 = this.cableList[value].k1
+        this.k2 = this.cableList[value].k2
+        this.confirm()
 
     }
     bindPickerChange(e: any,key:string): void {

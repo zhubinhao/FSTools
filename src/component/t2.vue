@@ -36,7 +36,7 @@ import { getBaseLog, float } from '@/utils/api';
 })
 export default class T2 extends Vue {
     @Provide() z18n: any = i18n.t('T2');
-    @Provide() array: Array<any> = ['7根绞合导体', '19根绞合导体', '单芯'];
+    @Provide() array: any = i18n.t('endsArray');
     @Provide() id: string | null = null;
     @Provide() arr: Array<any> = [0.93, 0.97, 1];
     @Provide() Val: string | number = '';
