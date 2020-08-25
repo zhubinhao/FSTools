@@ -105,9 +105,8 @@ export default class Bar extends Vue {
     color: #1296db;
   }
   .title{
-    width: 400rpx;
+    width: 300rpx;
     position: relative;
-    left: -50rpx;
     text-align: center;
     white-space: nowrap;
     overflow: hidden;
