@@ -41,9 +41,7 @@ export default class Index extends Vue {
         this.token && this.getData();
         return this.token;
     }
-    // getuserinfo(e:any){
-    //     console.log(e)
-    // }
+    
     async getData() {
         const data = {}
         const ad = await http({url: '/JY/Home_Poster'}).then((res: any) => res.data);

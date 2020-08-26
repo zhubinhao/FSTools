@@ -38,6 +38,7 @@ import { Vue, Component, Provide, Watch } from 'vue-property-decorator';
 import { i18n } from '@/utils/i18n';
 import { getBaseLog, float } from '@/utils/api';
 import cable from '@/static/cable';
+import {gIL} from '@/utils/formula'
 @Component({
     name: 'T1',
     components: {},
@@ -69,15 +70,8 @@ export default class T1 extends Vue {
         }
     }
     getData(): void {
-        let { F: f, M } = this.obj;
-        let g = f * 1000;
-        let Lid = this.Lid === '1' ? 0.06 : 0;
-        let Rid = this.Rid === '1' ? 0.06 : 0;
-        this.Val = (
-            ((this.k1 * Math.sqrt(g) + this.k2 * (f * 1000)) / 100) * M +
-            Lid * Math.sqrt(f) +
-            Rid * Math.sqrt(f)
-        ).toFixed(2);
+        let { F, M } = this.obj;
+        this.Val = gIL(F,M,this.k1,this.k2,this.Lid,this.Rid);
     }
     bindPickerChange1(e: any): void {
         const { value } = e.detail;

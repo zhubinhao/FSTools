@@ -15,7 +15,7 @@
         <view class="li">
             <text class="title">{{z18n.t4}}:</text>
             <picker @change="bindPickerChange" :value="index" :range="array">
-                <view class="input" :class="{gray:!array[id]}" >{{array[id]||z18n.msg1}}</view>
+                <view class="input" :class="{gray:!array[id]}">{{array[id]||z18n.msg1}}</view>
             </picker>
         </view>
         <view class="li">
@@ -29,6 +29,7 @@
 import { Vue, Component, Provide, Watch } from 'vue-property-decorator';
 import { i18n } from '@/utils/i18n';
 import { getBaseLog, float } from '@/utils/api';
+import { gZo } from '@/utils/formula';
 @Component({
     name: 'T2',
     components: {},
@@ -64,12 +65,7 @@ export default class T2 extends Vue {
         }
     }
     getData(): void {
-        this.Val = (
-            (138 *
-                this.obj.Vp *
-                getBaseLog((this.obj.D / this.obj.d) * this.obj.x)) /
-            100
-        ).toFixed(2);
+        this.Val =gZo(this.obj.Vp,this.obj.D,this.obj.d,this.obj.x)
     }
     bindPickerChange(e: any): void {
         const { value } = e.detail;
@@ -102,11 +98,11 @@ export default class T2 extends Vue {
             margin-right: 20rpx;
             height: 60rpx;
         }
-        .input{
+        .input {
             line-height: 70rpx;
         }
-        .gray{
-            color:gray;
+        .gray {
+            color: gray;
         }
     }
 }
