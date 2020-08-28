@@ -119,7 +119,6 @@ export default class Contrast extends Vue {
         L: '',
     };
 
-
     nativeTo(url: string): void {
         uni.navigateTo({ url });
     }
@@ -132,19 +131,14 @@ export default class Contrast extends Vue {
         this.confirm();
     }
     confirm():void{
-        console.log(this.Lid,this.Rid)
         if(this.obj.PL&&this.obj.L){
           this.list1&&this.getInfo(this.list1,'listObj1')
           this.list2&&this.getInfo(this.list2,'listObj2')
-
         }
-        
     }
     async getData() {
         const List = await http({ url: '/JY/Cable_List' }).then((res: any) => res.data);
         this.listArr = List
-        console.log(List);
-        // Cable_Info 获取电缆信息 参数token 参数 prod_id@唯愿时光清浅
     }
     async getInfo(index:string,key:string) {
         const prod_id = this.listArr[parseInt(index)].prod_id
@@ -152,9 +146,7 @@ export default class Contrast extends Vue {
         const k1 =Info.prod_field20
         const k2 =Info.prod_field21
         const maxp = Info.prod_field1.split('-')[1]
-        console.log(maxp)
 
-        console.log(this.Lid,this.Rid)
         Info.VSWR = (this.Lid=='1'||this.Rid=='1')?1.3:1.1
         Info.IL=gIL(this.obj.PL,this.obj.L,k1,k2,this.Lid,this.Rid)
 
@@ -164,10 +156,7 @@ export default class Contrast extends Vue {
                 Info[k] = '超出频率范围'
             }
         }
-
-        // prod_field1
         (this as any)[key] =Info
-        console.log((this as any)[key])
     }
      click(e: any, key: string): void {
         float(e, key, this);
