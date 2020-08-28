@@ -24,6 +24,7 @@ export default class Project extends Vue {
     @Provide() title: any = i18n.t('bar.t2');
 
     @State barHeight!: number;
+   
 }
 </script>
 
