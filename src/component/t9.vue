@@ -2,11 +2,11 @@
     <view class="T9">
         <view class="li">
             <text class="title">{{z18n.t1}}:</text>
-            <input type="number" :placeholder="z18n.msg2" v-model="obj.W" @confirm="confirm('W')" @input="click($event, 'W')" />
+            <input type="text" :placeholder="z18n.msg2" v-model="obj.W" @confirm="confirm('W')" @input="click($event, 'W')" />
         </view>
         <view class="li">
             <text class="title">{{z18n.t2}}:</text>
-            <input type="number" :placeholder="z18n.msg2" v-model="obj.D" @confirm="confirm('D')"  @input="click($event, 'D')"/> W
+            <input type="text" :placeholder="z18n.msg2" v-model="obj.D" @confirm="confirm('D')"  @input="click($event, 'D')"/> W
         </view>
     </view>
 </template>

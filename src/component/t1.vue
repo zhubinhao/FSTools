@@ -8,7 +8,7 @@
         </view>
         <view class="li">
             <text class="title">{{z18n.t2}}:</text>
-            <input type="number" :placeholder="z18n.msg2" v-model="obj.F" @confirm="confirm" @input="click($event, 'F')" /> GHZ
+            <input type="text" :placeholder="z18n.msg2" v-model="obj.F" @confirm="confirm" @input="click($event, 'F')" /> GHZ
         </view>
         <view class="li">
             <text class="title">{{z18n.t3}}:</text>
@@ -24,7 +24,7 @@
         </view>
         <view class="li">
             <text class="title">{{z18n.t5}}:</text>
-            <input type="number" :placeholder="z18n.msg2" v-model="obj.M" @confirm="confirm" @input="click($event, 'M')" /> M
+            <input type="text" :placeholder="z18n.msg2" v-model="obj.M" @confirm="confirm" @input="click($event, 'M')" /> M
         </view>
         <view class="li">
             <text class="title">{{z18n.t6}}:</text>

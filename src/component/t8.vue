@@ -2,11 +2,11 @@
     <view class="T8">
         <view class="li">
             <text class="title">{{z18n.t1}}:</text>
-            <input type="number" :placeholder="z18n.msg2" v-model="obj.VSWR" @confirm="confirm('VSWR')" @input="click($event, 'VSWR')" /> 
+            <input type="text" :placeholder="z18n.msg2" v-model="obj.VSWR" @confirm="confirm('VSWR')" @input="click($event, 'VSWR')" /> 
         </view>
         <view class="li">
             <text class="title">{{z18n.t2}}:</text>
-            <input type="number" :placeholder="z18n.msg2" v-model="obj.RL" @confirm="confirm('RL')" @input="click($event, 'RL')" /> dB
+            <input type="text" :placeholder="z18n.msg2" v-model="obj.RL" @confirm="confirm('RL')" @input="click($event, 'RL')" /> dB
         </view>
         
         <view class="li">

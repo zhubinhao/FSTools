@@ -2,15 +2,15 @@
     <view class="T3">
         <view class="li">
             <text class="title">{{z18n.t1}}:</text>
-            <input type="number" :placeholder="z18n.msg2" v-model="obj.Vp" @confirm="confirm('Vp')" @input="click($event, 'Vp')" /> %
+            <input type="text" :placeholder="z18n.msg2" v-model="obj.Vp" @confirm="confirm('Vp')" @input="click($event, 'Vp')" /> %
         </view>
         <view class="li">
             <text class="title">{{z18n.t3}}:</text>
-            <input type="number" :placeholder="z18n.msg2" v-model="obj.Td" @confirm="confirm('Td')" @input="click($event, 'Td')" /> Ns/m
+            <input type="text" :placeholder="z18n.msg2" v-model="obj.Td" @confirm="confirm('Td')" @input="click($event, 'Td')" /> Ns/m
         </view>
         <view class="li">
             <text class="title">{{z18n.t2}}:</text>
-            <input type="number" :placeholder="z18n.msg2" v-model="obj.j" @confirm="confirm('j')" @input="click($event, 'j')" />
+            <input type="text" :placeholder="z18n.msg2" v-model="obj.j" @confirm="confirm('j')" @input="click($event, 'j')" />
         </view>
         <!-- <view class="li">
             <text class="title">{{z18n.t4}}:</text>

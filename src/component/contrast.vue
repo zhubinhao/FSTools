@@ -23,11 +23,11 @@
         </view>
         <view class='li1'>
             <text>{{z18n.t4}}:</text>
-            <input type='number' v-model="obj.PL" :placeholder="z18n.msg2" @confirm="confirm" @input="click($event, 'PL')" />GHZ
+            <input type='text' v-model="obj.PL" :placeholder="z18n.msg2" @confirm="confirm" @input="click($event, 'PL')" />GHZ
         </view>
         <view class='li1'>
             <text>{{z18n.t5}}:</text>
-            <input type='number' v-model="obj.L" :placeholder="z18n.msg2"  @confirm="confirm" @input="click($event, 'L')"  />M
+            <input type='text' v-model="obj.L" :placeholder="z18n.msg2"  @confirm="confirm" @input="click($event, 'L')"  />M
         </view>
         <!-- 电缆外径 -->
         <view class='li1'>
