@@ -11,7 +11,6 @@
         <view class="msg" v-if="info.comp_linkman">{{z18n.t3}}：{{info.comp_linkman}}</view>
         <view class="msg" v-if="info.comp_url">{{z18n.t4}}：{{info.comp_url}}</view>
         <view class="msg pb30">{{info.comp_address}}</view>
-        <button class="userInfoBtn" open-type="getUserInfo" @getuserinfo="bindGetUserInfo" v-if="show" ></button>
     </view>
 </template>
 
@@ -32,13 +31,8 @@ export default class Index extends Vue {
     @Provide() info: any = {};
     @Provide() z18n: any = i18n.t('about');
     @Provide() title: any = i18n.t('bar.t4');
-    @Provide() show: boolean = false
 
     @State barHeight!:number;
-    onLoad(){
-        this.show = uni.getStorageSync('userInfos')? false:true
-
-    }
     mounted() {
         this.getData();
     }
@@ -47,13 +41,7 @@ export default class Index extends Vue {
         info.comp_image = imgUrl + info.comp_image;
         this.info = info;
     }
-    bindGetUserInfo (e:any) {
-      if (e.detail.errMsg != 'getUserInfo:ok') {
-      }else{
-        uni.setStorageSync('userInfos',e.detail.userInfo)
-        this.show =false
-      }
-    }
+    
 }
 </script>
 

@@ -1,65 +1,91 @@
 <template>
-    <view class="Seach">
-        <view class='li'>
-            <text>{{z18n.t1}}:</text>
-            <input type='number' :placeholder="z18n.msg2" />
-        </view>
-
-        <view class='li'>
-            <text>{{z18n.t2}}:</text>
-            <input type='number' :placeholder="z18n.msg2" />
-        </view>
-        <view class='li'>
-            <text>{{z18n.t3}}:</text>
-            <input type='number' :placeholder="z18n.msg2" />
-        </view>
-        <view class='li'>
-            <text>{{z18n.t4}}:</text>
-            <input type='number' :placeholder="z18n.msg2" />
-        </view>
-        <view class='seach'>{{z18n.t5}}</view>
+  <view class="Seach">
+    <view class="li">
+      <text>{{z18n.t1}}:</text>
+      <input type="number" v-model="ghz" :placeholder="z18n.msg2" />
     </view>
+
+    <view class="li">
+      <text>{{z18n.t2}}:</text>
+      <input type="number" v-model="mm" :placeholder="z18n.msg2" />
+    </view>
+    <view class="li">
+      <text>{{z18n.t3}}:</text>
+      <input type="number" v-model="db" :placeholder="z18n.msg2" />
+    </view>
+    <view class="li">
+      <text>{{z18n.t4}}:</text>
+      <input type="number" v-model="xs" :placeholder="z18n.msg2" />
+    </view>
+    <view class="seach" @click="seach">{{z18n.t5}}</view>
+  </view>
 </template>
 
 <script lang="ts">
-import { Vue, Component, Provide } from 'vue-property-decorator';
-import { i18n } from '@/utils/i18n';
+import { Vue, Component, Provide } from "vue-property-decorator";
+import { i18n } from "@/utils/i18n";
+import { http } from "@/utils/http";
+import { imgUrl } from "@/utils/path";
 
 @Component({
-    name: 'Seach',
-    components: {},
+  name: "Seach",
+  components: {}
 })
 export default class Seach extends Vue {
-    @Provide() z18n: any = i18n.t('seach');
+  @Provide() z18n: any = i18n.t("seach");
+  @Provide() ghz: string = "";
+  @Provide() mm: string = "";
+  @Provide() db: string = "";
+  @Provide() xs: string = "";
 
-    nativeTo(url: string): void {
-        uni.navigateTo({ url });
+   nativeTo(item:any){
+     uni.navigateTo({
+       url:`/pages/index/details?img=${item.prod_image}&id=${item.prod_id}&sc=${item.coll_id||""}`
+     })
     }
+  async seach() {
+    const data = {
+      ghz: this.ghz,
+      mm: this.mm,
+      db: this.db,
+      xs: this.xs,
+      wx:uni.getStorageSync("openid"),
+    };
+    const info = await http({ url: "/JY/Product_Find", data }).then(
+      (res:any) => res.data
+    );
+    info.map((res: any) => {
+      res.prod_image = imgUrl + res.prod_image;
+    });
+    uni.navigateTo({
+        url:`/pages/project/list?info=${JSON.stringify(info)}`
+    })
+  }
 }
 </script>
 
 <style lang="scss" scoped>
 .Seach {
-    padding-bottom: 200rpx;
-    .li {
-        display: flex;
-        justify-content: flex-start;
-        align-items: center;
-        height: 80rpx;
-        font-size: 30rpx;
-        text {
-            width: 280rpx;
-        }
-        input {
-            width: 260rpx;
-            border-bottom: 1px solid gray;
-        }
+  .li {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    height: 80rpx;
+    font-size: 30rpx;
+    text {
+      width: 280rpx;
     }
-    .seach {
-        font-size: 36rpx;
-        text-align: center;
-        margin-top: 30rpx;
-        color: #1296db;
+    input {
+      width: 260rpx;
+      border-bottom: 1px solid gray;
     }
+  }
+  .seach {
+    font-size: 36rpx;
+    text-align: center;
+    margin-top: 30rpx;
+    color: #1296db;
+  }
+
 }
 </style>

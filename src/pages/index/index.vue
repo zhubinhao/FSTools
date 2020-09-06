@@ -75,7 +75,7 @@ export default class Index extends Vue {
         .adImg {
             height: 300rpx;
             width: 750rpx;
-            background: #f6f6f6;
+            background: lightgray;
         }
     }
 }

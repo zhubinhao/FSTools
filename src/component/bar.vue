@@ -34,7 +34,7 @@ export default class Bar extends Vue {
       "pages/index/index",
       "pages/project/project",
       "pages/formula/formula",
-      "pages/about/about"
+      "pages/my/my"
     ];
     let pagesArr: any = getCurrentPages();
     let pages = pagesArr[pagesArr.length - 1].route;
@@ -69,7 +69,7 @@ export default class Bar extends Vue {
       let locale = i18n.locale;
       locale === "zh" ? (i18n.locale = "en") : (i18n.locale = "zh");
       let msg: string =i18n.locale == "zh" ? "已经切换成中文,请重启小程序" : "已经切换成英文,请重启小程序";
-      uni.showToast({ title: msg });
+      uni.showToast({ title: msg ,icon:"none"});
       uni.setStorageSync("locale", i18n.locale);
       const updateManager = uni.getUpdateManager();
       // 新的版本已经下载好，调用 applyUpdate 应用新版本并重启

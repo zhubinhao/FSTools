@@ -83,8 +83,9 @@ export default class T2 extends Vue {
         display: flex;
         justify-content: flex-start;
         align-items: center;
-        height: 80rpx;
-        font-size: 30rpx;
+        min-height: 80rpx;
+        font-size: 28rpx;
+        margin-bottom: 10px;
         .title {
             width: 250rpx;
         }

@@ -23,13 +23,13 @@ export default Vue.extend({
       };
       const token = await http({ url: "/JY/GetToken", data }).then((res: any) => res.token);
       this.$store.commit("setToken", token);
-      getOpenIds().then(res=>{
-        console.log(res)
+      getOpenIds().then((res:any)=>{
+        uni.setStorageSync("openid", res.openid);
       })
     },
     setBar() {
       let obj: any = i18n.t("bar");
-      [1, 2, 3, 4].map((res, index) => {
+      [1, 2, 3,6].map((res, index) => {
         uni.setTabBarItem({
           index,
           text: obj["t" + res]

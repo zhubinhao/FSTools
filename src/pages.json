@@ -1,59 +1,37 @@
 {
 	"pages": [
 		{
-			"path": "pages/index/index",
-			"style": {
-				"navigationBarTitleText": "产品中心",
-				"app-plus": {
-					"titleNView": {
-							"buttons": [
-									{
-											"text": "\ue670",
-											"fontSrc": "/static/iconfont.ttf",
-											"fontSize": "22px",
-											"float": "left"
-									},
-									{
-											"text": "\ue62c",
-											"fontSrc": "/static/iconfont.ttf",
-											"fontSize": "22px"
-
-									}
-							]
-						}
-						
-					}
-			}
+			"path": "pages/index/index"
 		},
 		{
-			"path": "pages/index/details",
-			"style": {
-				"navigationBarTitleText": "产品详情"
-			}
+			"path": "pages/index/list"
 		},
 		{
-			"path": "pages/project/project",
-			"style": {
-				"navigationBarTitleText": "工程选型"
-			}
+			"path": "pages/index/details"
+		},
+		{
+			"path": "pages/project/project"
 		},
 		{
 			"path": "pages/project/seach"
 		},
 		{
-			"path": "pages/formula/formula",
-			"style": {
-				"navigationBarTitleText": "计算公式"
-			}
+			"path": "pages/project/list"
+		},
+		{
+			"path": "pages/formula/formula"
 		},
 		{
 			"path": "pages/formula/details"
 		},
 		{
-			"path": "pages/about/about",
-			"style": {
-				"navigationBarTitleText": "公司介绍"
-			}
+			"path": "pages/about/about"
+		},
+		{
+			"path": "pages/my/my"
+		},
+		{
+			"path": "pages/my/favorites"
 		}
 	],
 	"globalStyle": {
@@ -88,10 +66,10 @@
 				"text": "计算公式"
 			},
 			{
-				"pagePath": "pages/about/about",
+				"pagePath": "pages/my/my",
 				"iconPath": "static/img/我的.png",
 				"selectedIconPath": "static/img/我的1.png",
-				"text": "公司介绍"
+				"text": "我的"
 			}
 		]
 	}

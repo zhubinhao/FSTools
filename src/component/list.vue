@@ -1,6 +1,6 @@
 <template>
   <view class="content">
-      <view class="com_list" @click="nativeTo(`/pages/index/details?id=${inner.sty_id}`)">
+      <view class="com_list" @click="nativeTo">
       <view>
         <text>{{inner.sty_style}}</text>
         <text class="introduce">{{inner.sty_introduce}}</text>
@@ -20,8 +20,10 @@ import { Vue, Component, Provide, Prop } from 'vue-property-decorator';
 })
 export default class List extends Vue {
   @Prop() private inner!:any
-  nativeTo(url:string):void{
-    uni.navigateTo({url})
+  nativeTo():void{
+    uni.navigateTo({
+      url:`/pages/index/list?id=${this.inner.sty_id}&name=${this.inner.sty_style}`
+    })
   }
 }
 </script>

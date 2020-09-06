@@ -40,9 +40,11 @@ export default class Formula extends Vue {
       height: 90rpx;
       line-height: 90rpx;
       padding: 0 30rpx;
-      font-size: 28rpx;
+      font-size: 26rpx;
       border-bottom: 1px solid lightgray;
-       
+      word-wrap: noWrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
     }
     .borderTop{
       border-top: 1px solid lightgray;

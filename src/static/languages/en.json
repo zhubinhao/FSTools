@@ -4,9 +4,15 @@
     "t2": "Equipment selection",            
     "t3": "Design formulas",             
     "t4": "About us",            
-    "t5": "Product info",            
+    "t5": "Product info", 
+    "t6": "my",
+    "t7":"favorites",
+    "t8":"search results",
     "msg1": "Switched to Chinese, please restart the applet",           
-    "msg2": "Switched to English, please restart the applet"         
+    "msg2": "Switched to English, please restart the applet",
+    "msg3": "No collection",
+    "msg4": "No data"
+
   },
   "contrast": {
     "title": "Equipment selection",         
@@ -31,7 +37,7 @@
   },
   "seach": {
     "t1": "Frequncy(GHZ)",         
-    "t2": "Length(mm)",          
+    "t2": "Length(m)",          
     "t3": "Attenuation requirements(dB)",      
     "t4": "Connector attenuation coefficient",  
     "t5": "Search",                  

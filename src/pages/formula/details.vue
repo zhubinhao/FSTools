@@ -50,7 +50,6 @@ export default class FormulaDetails extends Vue {
   @State barHeight!:number;
 
   onLoad(options:any){
-      console.log(options)
       this.title = options.title
       this.type = options.id
   }
@@ -60,7 +59,7 @@ export default class FormulaDetails extends Vue {
 .FormulaDetails {
   .head {
     height: 80rpx;
-    border-bottom: 1px solid #f6f6f6;
+    border-bottom: 1px solid lightgray;
     font-size: 32rpx;
     text-align: center;
     line-height: 80rpx;
