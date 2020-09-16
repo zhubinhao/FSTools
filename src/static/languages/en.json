@@ -36,7 +36,7 @@
     "msg3": "Result of calculation"       
   },
   "seach": {
-    "t1": "Frequncy(GHZ)",         
+    "t1": "Frequncy(GHz)",         
     "t2": "Length(m)",          
     "t3": "Attenuation requirements(dB)",      
     "t4": "Connector attenuation coefficient",  

@@ -6,7 +6,7 @@
         </view>
         <view class="li">
             <text class="title">{{z18n.t2}}:</text>
-            <input type="text" :placeholder="z18n.msg2" v-model="obj.D" @confirm="confirm('D')"  @input="click($event, 'D')"/> W
+            <input type="text" :placeholder="z18n.msg2" v-model="obj.D" @confirm="confirm('D')"  @input="click($event, 'D')"/>
         </view>
     </view>
 </template>
