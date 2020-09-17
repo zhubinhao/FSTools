@@ -1,12 +1,13 @@
 const urlObj:any={
 	development:'http://120.24.92.135:9009', //本地
-	test:'http://120.24.92.135:9009',//测试
-	pro:'http://120.24.92.135:9009', //生产
+	test:'http://app.juncoax.com',//测试
+	pro:'https://app.juncoax.com', //生产
 }
+
 const imgObj:any={
 	development:'http://120.24.92.135:9009/firewebv/Image/', //本地
-	test:'http://120.24.92.135:9009/firewebv/Image/',//测试
-	pro:'http://120.24.92.135:9009/firewebv/Image/', //生产
+	test:'http://app.juncoax.com/firewebv/Image/',//测试
+	pro:'https://app.juncoax.com/firewebv/Image/', //生产
 }
 
 
