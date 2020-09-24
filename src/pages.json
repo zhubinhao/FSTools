@@ -22,6 +22,9 @@
 			"path": "pages/formula/formula"
 		},
 		{
+			"path": "pages/my/details"
+		},
+		{
 			"path": "pages/formula/details"
 		},
 		{
@@ -64,6 +67,12 @@
 				"iconPath": "static/img/公式.png",
 				"selectedIconPath": "static/img/公式1.png",
 				"text": "计算公式"
+			},
+			{
+				"pagePath": "pages/about/about",
+				"iconPath": "static/img/我的.png",
+				"selectedIconPath": "static/img/我的1.png",
+				"text": "军友介绍"
 			},
 			{
 				"pagePath": "pages/my/my",

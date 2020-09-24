@@ -160,6 +160,8 @@ export default class Contrast extends Vue {
     }
      click(e: any, key: string): void {
         float(e, key, this);
+        this.confirm();
+
     }
 }
 </script>
@@ -184,7 +186,7 @@ export default class Contrast extends Vue {
     .li text,
     .li1 text {
         width: 280rpx;
-        font-size: 26rpx;
+        font-size: 30rpx;
     }
 
     .li1 view {

@@ -43,7 +43,7 @@ export default class Index extends Vue {
     }
     nativeTo(item:any){
      uni.navigateTo({
-       url:`/pages/index/details?img=${item.prod_image}&id=${item.prod_id}&sc=1`
+       url:`/pages/my/details?img=${item.prod_image}&id=${item.prod_id}&sc=1`
      })
     }
     

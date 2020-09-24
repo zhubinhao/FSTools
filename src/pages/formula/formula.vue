@@ -38,13 +38,15 @@ export default class Formula extends Vue {
 .Formula {
     .list {
       height: 90rpx;
-      line-height: 90rpx;
       padding: 0 30rpx;
-      font-size: 26rpx;
+      font-size: 30rpx;
       border-bottom: 1px solid lightgray;
       word-wrap: noWrap;
       text-overflow: ellipsis;
       overflow: hidden;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center
     }
     .borderTop{
       border-top: 1px solid lightgray;

@@ -57,14 +57,14 @@ image {
     color: rgba(51, 51, 51, 1);
 }
 .msg {
-    font-size: 30rpx;
+    font-size: 26rpx;
     padding: 0 30rpx 0 50rpx;
     line-height: 50rpx;
     font-weight: 400;
     color: rgba(51, 51, 51, 1);
 }
 .content {
-    font-size: 32rpx;
+    font-size: 30rpx;
     padding: 0 30rpx;
     line-height: 50rpx;
     text-indent: 2em;

@@ -2,10 +2,11 @@
     <view class="About" :style="{paddingTop:barHeight+'px'}">
         <bar :title="title" />
         <view class="titles">
-          <text class='nick'>{{userInfos.nickName||"登录"}}</text>
-          <image class="img" :src="userInfos.avatarUrl" ></image>
+          <open-data type="userNickName"  class="nick" v-if="isuser" ></open-data>
+          <open-data type="userAvatarUrl"  class="img" v-if="isuser" ></open-data>
+          <text class='nick' v-if="!isuser">"登录"</text>
         </view>
-        <view class="p" @click="nativeTo('/pages/about/about')">{{t4}}</view>
+        <!-- <view class="p" @click="nativeTo('/pages/about/about')">{{t4}}</view> -->
         <view class="p" @click="nativeTo('/pages/my/favorites')">{{t7}}</view>
         <view></view>
         <userinfor @load="load"></userinfor>
@@ -28,19 +29,13 @@ import userinfor from "@/component/userinfor.vue"
     components: {bar,userinfor},
 })
 export default class Index extends Vue {
-    @Provide() userInfos: any = {};
     @Provide() z18n: any = i18n.t('about');
     @Provide() title: any = i18n.t('bar.t6');
     @Provide() t4: any = i18n.t('bar.t4');
     @Provide() t7: any = i18n.t('bar.t7');
+    @Provide() isuser:any =  uni.getStorageSync("isuser");
 
     @State barHeight!:number;
-    mounted() {
-        this.load()
-    }
-    load(){
-     this.userInfos = uni.getStorageSync("userInfos")||{};
-    }
     nativeTo(url:string){
       uni.navigateTo({url})
     }
@@ -61,7 +56,6 @@ export default class Index extends Vue {
     .img{
       width: 90rpx;
       height: 90rpx;
-      border-radius: 50%;
       border:1px solid lightgray;
     }
 
