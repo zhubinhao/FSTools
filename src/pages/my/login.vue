@@ -47,6 +47,7 @@ export default class Login extends Vue {
     const data =  this.getData()
     if(!data)return
     await http({ url: "/JY/WX_Info",data })
+    uni.setStorageSync("isuser", true);
     uni.switchTab({
       url:"/pages/index/index"
     })
