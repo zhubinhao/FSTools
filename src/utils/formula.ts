@@ -3,8 +3,8 @@ import { getBaseLog, float } from '@/utils/api';
 // 插入损耗
 export const gIL = (F: any, M: any, k1: any, k2: any, Lid: any, Rid: any) => {
     let g = F * 1000;
-    Lid = Lid === '1' ? 0.06 : 0;
-    Rid = Rid === '1' ? 0.06 : 0;
+    // Lid = Lid === '1' ? 0.06 : 0;
+    // Rid = Rid === '1' ? 0.06 : 0;
     let Val = (((k1 * Math.sqrt(g) + k2 * (F * 1000)) / 100) * M + Lid * Math.sqrt(F) + Rid * Math.sqrt(F)).toFixed(2);
     return Val
 }

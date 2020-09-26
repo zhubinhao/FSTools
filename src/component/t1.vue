@@ -12,14 +12,14 @@
         </view>
         <view class="li">
             <text class="title">{{z18n.t3}}:</text>
-            <picker @change="bindPickerChange($event,'Lid')" :value="index" :range="array">
-                <view class="input" :class="{gray:!array[Lid]}" >{{array[Lid]||z18n.msg1}}</view>
+            <picker @change="bindPickerChange($event,'Lid')" :value="index" :range="option" range-key="di_name">
+                <view class="input" :class="{gray:!option[Lid]}" >{{option[Lid].di_name||z18n.msg1}}</view>
             </picker>
         </view>
         <view class="li">
             <text class="title">{{z18n.t4}}:</text>
-            <picker @change="bindPickerChange($event,'Rid')" :value="index" :range="array">
-                <view class="input" :class="{gray:!array[Rid]}" >{{array[Rid]||z18n.msg1}}</view>
+            <picker @change="bindPickerChange($event,'Rid')" :value="index" :range="option" range-key="di_name">
+                <view class="input" :class="{gray:!option[Rid]}" >{{option[Rid].di_name||z18n.msg1}}</view>
             </picker>
         </view>
         <view class="li">
@@ -37,6 +37,7 @@
 import { Vue, Component, Provide, Watch } from 'vue-property-decorator';
 import { i18n } from '@/utils/i18n';
 import { getBaseLog, float } from '@/utils/api';
+import { http } from "@/utils/http";
 import cable from '@/static/cable';
 import {gIL} from '@/utils/formula'
 @Component({
@@ -46,11 +47,12 @@ import {gIL} from '@/utils/formula'
 export default class T1 extends Vue {
     @Provide() z18n: any = i18n.t('T1');
     @Provide() array: any = i18n.t('selectArray');
-    @Provide() Lid: string | null = null;
-    @Provide() Rid: string | null = null;
+    @Provide() Lid: any  = '';
+    @Provide() Rid: any  = '';
     @Provide() cableIndex: string | null = null;
     @Provide() k1: any = null;
     @Provide() k2: any = null;
+    @Provide() option:Array<any> = []
 
     @Provide() Val: string | number = '';
     @Provide() cableList: any = cable;
@@ -59,6 +61,9 @@ export default class T1 extends Vue {
         F: '',
         M: '',
     };
+    mounted(){
+        this.getType()
+    }
     click(e: any, key: string): void {
         float(e, key, this);
     }
@@ -69,9 +74,16 @@ export default class T1 extends Vue {
             this.Val = '';
         }
     }
+    async getType(){
+      const data = await http({ url: "/JY/Dict_Info",data:{di_type:"连接器"}} ).then((res:any)=>res.data)
+      this.option = data
+
+    }
     getData(): void {
         let { F, M } = this.obj;
-        this.Val = gIL(F,M,this.k1,this.k2,this.Lid,this.Rid);
+        let Lid = this.option[this.Lid].di_value||0;
+        let Rid = this.option[this.Rid].di_value||0;
+        this.Val = gIL(F,M,this.k1,this.k2,Lid,Rid);
     }
     bindPickerChange1(e: any): void {
         const { value } = e.detail;

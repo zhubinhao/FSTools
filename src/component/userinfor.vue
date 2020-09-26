@@ -22,7 +22,6 @@ export default class List extends Vue {
     if (e.detail.errMsg != "getUserInfo:ok") {
     } else {
       uni.setStorageSync("userInfos", e.detail.userInfo);
-      this.login(e.detail.userInfo)
       this.$emit('load')
       this.show = false;
     }

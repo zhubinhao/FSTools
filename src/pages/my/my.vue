@@ -4,7 +4,7 @@
         <view class="titles">
           <open-data type="userNickName"  class="nick" v-if="isuser" ></open-data>
           <open-data type="userAvatarUrl"  class="img" v-if="isuser" ></open-data>
-          <text class='nick' v-if="!isuser">"登录"</text>
+          <text class='nick' v-if="!isuser" @click="nativeTo('/pages/my/login')">登录</text>
         </view>
         <!-- <view class="p" @click="nativeTo('/pages/about/about')">{{t4}}</view> -->
         <view class="p" @click="nativeTo('/pages/my/favorites')">{{t7}}</view>
@@ -57,6 +57,10 @@ export default class Index extends Vue {
       width: 90rpx;
       height: 90rpx;
       border:1px solid lightgray;
+    }
+    .nick{
+      flex: 1
+
     }
 
 }

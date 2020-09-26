@@ -14,7 +14,7 @@
                 <scroll-view scroll-y :style='{height:screenHeight,top:barHeight+"px"}' class="box" >
                     <image :src='item.prod_image' mode="widthFix" class="img" @click="preView(item.prod_image)"></image>
                     
-                    <view style="height:160rpx"><view>
+                    <view style="height:160rpx"></view>
                     <view class="sc" v-if="isuser">
                         <text  @click="shouchang(item)">{{item.coll_id?"已收藏":"收藏"}}</text>
                         <userinfor/>

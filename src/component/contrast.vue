@@ -10,15 +10,15 @@
             </picker>
         </view>
         <view class='li'>
-            <text>{{z18n.t2}}:</text>
-            <picker @change="bindPickerChange($event,'Lid')" :value="index" :range="array">
-                <view class="input w260" :class="{gray:!array[Lid]}">{{array[Lid]||z18n.msg1}}</view>
+            <text>{{z18n.t2}}1:</text>
+            <picker @change="bindPickerChange($event,'Lid')" :value="index" :range="option" range-key="di_name">
+                <view class="input w260" :class="{gray:!option[Lid]}">{{option[Lid].di_name||z18n.msg1}}</view>
             </picker>
         </view>
         <view class='li'>
-            <text>{{z18n.t3}}:</text>
-            <picker @change="bindPickerChange($event,'Rid')" :value="index" :range="array">
-                <view class="input w260" :class="{gray:!array[Rid]}">{{array[Rid]||z18n.msg1}}</view>
+            <text>{{z18n.t3}}2:</text>
+            <picker @change="bindPickerChange($event,'Rid')" :value="index" :range="option" range-key="di_name">
+                <view class="input w260" :class="{gray:!option[Rid]}">{{option[Rid].di_name||z18n.msg1}}</view>
             </picker>
         </view>
         <view class='li1'>
@@ -111,8 +111,9 @@ export default class Contrast extends Vue {
     @Provide() list2: string | null = null;
     @Provide() listObj1: any = {};
     @Provide() listObj2: any = {};
-    @Provide() Lid: string | null = null;
-    @Provide() Rid: string | null = null;
+    @Provide() Lid: any = null;
+    @Provide() Rid: any = null;
+    @Provide() option:Array<any> =[]
 
     @Provide() obj: any = {
         PL: '',
@@ -124,6 +125,14 @@ export default class Contrast extends Vue {
     }
     mounted() {
         this.getData();
+        this.getType();
+
+    }
+    async getType(){
+      const data = await http({ url: "/JY/Dict_Info",data:{di_type:"连接器"}} ).then((res:any)=>res.data)
+      this.option = data
+      console.log(data)
+
     }
     bindPickerChange(e: any, key: string): void {
         const { value } = e.detail;
@@ -146,9 +155,11 @@ export default class Contrast extends Vue {
         const k1 =Info.prod_field20
         const k2 =Info.prod_field21
         const maxp = Info.prod_field1.split('-')[1]
-
-        Info.VSWR = (this.Lid=='1'||this.Rid=='1')?1.3:1.1
-        Info.IL=gIL(this.obj.PL,this.obj.L,k1,k2,this.Lid,this.Rid)
+        let Lid = this.Lid?this.option[this.Lid].di_value||0:0;
+        let Rid = this.Rid?this.option[this.Rid].di_value||0:0;
+        console.log(Rid,Lid)
+        Info.VSWR = (Lid!=0||Rid!=0)?1.3:1.1
+        Info.IL=gIL(this.obj.PL,this.obj.L,k1,k2,Lid,Rid)
 
         Info.PG = (Info.prod_field26*(k1 * Math.sqrt(300) + k2*300)/(this.obj.PL*1000)).toFixed(2);
         if(Number(maxp)<this.obj.PL){

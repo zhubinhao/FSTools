@@ -25,6 +25,9 @@
 			"path": "pages/my/details"
 		},
 		{
+			"path": "pages/my/login"
+		},
+		{
 			"path": "pages/formula/details"
 		},
 		{
@@ -52,32 +55,32 @@
 		"list": [
 			{
 				"pagePath": "pages/index/index",
-				"iconPath": "static/img/首页.png",
-				"selectedIconPath": "static/img/首页1.png",
+				"iconPath": "static/img/产品中心未选中.png",
+				"selectedIconPath": "static/img/产品中心.png",
 				"text": "产品中心"
 			},
 			{
 				"pagePath": "pages/project/project",
-				"iconPath": "static/img/工程.png",
-				"selectedIconPath": "static/img/工程1.png",
+				"iconPath": "static/img/工程选型未选中.png",
+				"selectedIconPath": "static/img/工程选型.png",
 				"text": "工程选型"
 			},
 			{
 				"pagePath": "pages/formula/formula",
-				"iconPath": "static/img/公式.png",
-				"selectedIconPath": "static/img/公式1.png",
+				"iconPath": "static/img/计算公式未选中.png",
+				"selectedIconPath": "static/img/计算公式.png",
 				"text": "计算公式"
 			},
 			{
 				"pagePath": "pages/about/about",
-				"iconPath": "static/img/我的.png",
-				"selectedIconPath": "static/img/我的1.png",
+				"iconPath": "static/img/军友简介未选中.png",
+				"selectedIconPath": "static/img/军友简介.png",
 				"text": "军友介绍"
 			},
 			{
 				"pagePath": "pages/my/my",
-				"iconPath": "static/img/我的.png",
-				"selectedIconPath": "static/img/我的1.png",
+				"iconPath": "static/img/我的未选中.png",
+				"selectedIconPath": "static/img/我的.png",
 				"text": "我的"
 			}
 		]
