@@ -10,13 +10,13 @@
             </picker>
         </view>
         <view class='li'>
-            <text>{{z18n.t2}}1:</text>
+            <text>{{z18n.t2}}:</text>
             <picker @change="bindPickerChange($event,'Lid')" :value="index" :range="option" range-key="di_name">
                 <view class="input w260" :class="{gray:!option[Lid]}">{{option[Lid].di_name||z18n.msg1}}</view>
             </picker>
         </view>
         <view class='li'>
-            <text>{{z18n.t3}}2:</text>
+            <text>{{z18n.t3}}:</text>
             <picker @change="bindPickerChange($event,'Rid')" :value="index" :range="option" range-key="di_name">
                 <view class="input w260" :class="{gray:!option[Rid]}">{{option[Rid].di_name||z18n.msg1}}</view>
             </picker>
