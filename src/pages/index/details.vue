@@ -13,7 +13,7 @@
             <swiper-item v-for="item in listData" :key="item.prod_id">
                 <scroll-view scroll-y :style='{height:screenHeight,top:barHeight+"px"}' class="box" >
                     <image :src='item.prod_image' mode="widthFix" class="img" @click="preView(item.prod_image)"></image>
-                    
+                    <view @click="openFile(item.url,item.prod_file)" v-if="isuser&&item.url">查看附件</view>
                     <view style="height:160rpx"></view>
                     <view class="sc" v-if="isuser">
                         <text  @click="shouchang(item)">{{item.coll_id?"已收藏":"收藏"}}</text>
@@ -111,6 +111,40 @@ export default class Details extends Vue {
         })
 
     }
+     openFile(path:string,type:string){ 
+        let ty:string = type.split(".")[1].toLowerCase();
+        let imageArr = ["bmp", 'jpg', 'jpeg', 'png', 'gif'];
+        if (imageArr.includes(ty)) {
+            wx.previewImage({
+            urls: [path],
+            })
+            return;
+        }
+        console.log(ty)
+        wx.showLoading({
+            title: '加载中...',
+        })
+        wx.downloadFile({
+            url: path,
+            success: function (res) {
+            var filePath = res.tempFilePath
+            wx.openDocument({
+                filePath: filePath,
+                fileType: ty,
+                success: function (res) {
+                 wx.hideLoading()
+                },
+                fail: function (r) {
+                wx.hideLoading();
+                wx.showToast({
+                    title: '暂时不支持打开该类型文件',
+                    duration: 2000
+                })
+                },
+            })
+            }
+        })
+        }
 }
 </script>
 

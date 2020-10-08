@@ -7,7 +7,7 @@
             </swiper-item>
         </swiper>
         <view v-for="item in productList" :key="item.sty_id">
-            <u-list :inner="item"></u-list>
+            <u-list :inner="item" @nativeTo="nativeTo"></u-list>
         </view>
         <!-- <button open-type="getUserInfo" @getuserinfo="getuserinfo">授权</button> -->
     </view>
@@ -45,7 +45,7 @@ export default class Index extends Vue {
     async getData() {
         const data = {}
         const ad = await http({url: '/JY/Home_Poster'}).then((res: any) => res.data);
-        const product = await http({url: '/JY/Home_Product'}).then((res: any) => res.data);
+        const product = await http({url: '/JY/Home_Product',data:{parent: '0'}}).then((res: any) => res.data);
 
         ad.map((res: any) => {
             res.h_image = imgUrl + res.h_image;
@@ -53,8 +53,15 @@ export default class Index extends Vue {
         product.map((res: any) => {
             res.sty_image = imgUrl + res.sty_image;
         });
+
         this.adList = ad;
         this.productList = product;
+    }
+    nativeTo(data:any):void{
+        console.log(data)
+        uni.navigateTo({
+            url:`/pages/index/list?id=${data.sty_id}&title=${data.sty_style}`
+        })
     }
     onShareAppMessage() {
       return {
