@@ -143,15 +143,15 @@
   "endsArray":["7 pcs Stranded conductor", "19 pcs stranded conductor", "single core "],  
   "selectArray":["Not to choose","0.06"],
   "gs":{
-    "t1":["IL=K1*sqrt(fMHz)+K2*(fMHz)","IL: Insertion loss","K1:Cable KI1 value","K1:Cable KI1 value","f:frequency"],
-    "t2":["Z0=138*Vp*log(D/d*Ks)","Z0:impedance","Vp: propagation rate","D：inner diameter of outer conductor","d:Outer diameter of inner conductor","Ks：Conductor coefficient"],
-    "t3":["Td=3.33/Vp,ε=1/Vp2","Vp=（1/√ε）*100;Td=3.33*√ε","ε=Td2/3.332,Vp=(3.33/Td)*100","ε: dielectric constant","Vp: rate","Td: time delay"],
-    "t4":["LTH=(300*Vp)/(F*360)","LTH: phase ","F: frequency","Vp：speed"],
-    "t5":["φ=L*F*360/(300*Vp)","L=φ*(300*Vp)/360/F","φ: Electric length","L: length","F: frequency","Vp: rate"],
-    "t6":["TPC=[L*F*360/(300*Vp)]*(Δφ/1000000)","L: length","F: frequency","Vp: rate","TPC: temperature phase"],
-    "t7":["F=(190*Vp)/(D+d*Ks)","Vp: Transmission rate","D: inner diameter of outer conductor","d: Outer diameter of inner conductor","Ks：Conductor coefficient"],
+    "t1":["IL=K1*sqrt(fMHz)+K2*(fMHz)","IL：Insertion loss","K1：Cable KI1 value","K1：Cable KI1 value","f：frequency"],
+    "t2":["Z0=138*Vp*log(D/d*Ks)","Z0：impedance","Vp：propagation rate","D：inner diameter of outer conductor","d：Outer diameter of inner conductor","Ks：Conductor coefficient"],
+    "t3":["Td=3.33/Vp,ε=1/Vp2","Vp=（1/√ε）*100;Td=3.33*√ε","ε=Td2/3.332,Vp=(3.33/Td)*100","ε：dielectric constant","Vp：rate","Td：time delay"],
+    "t4":["LTH=(300*Vp)/(F*360)","LTH：phase ","F：frequency","Vp：speed"],
+    "t5":["φ=L*F*360/(300*Vp)","L=φ*(300*Vp)/360/F","φ：Electric length","L：length","F：frequency","Vp：rate"],
+    "t6":["TPC=[L*F*360/(300*Vp)]*(Δφ/1000000)","L：length","F：frequency","Vp：rate","TPC：temperature phase"],
+    "t7":["F=(190*Vp)/(D+d*Ks)","Vp：Transmission rate","D：inner diameter of outer conductor","d：Outer diameter of inner conductor","Ks：Conductor coefficient"],
     "t8":["RL=-20*Log[(VSWR-1)/(VSWR+1)]","RL=-20*Log[(VSWR-1)/(VSWR+1)]","VSWR=(1+10-RL/20)/(1-10-RL/20)x(-1)",
-          "ME=[1-(VSWR-1/VSWR+1)2]*100","VSWR：Voltage Standing Wave Ratio","RL：Return loss","ME: matching efficiency"],
-    "t9":["dBm=10*Log(W*1000)","W: power","dBm: Decibel milliwatt"]
+          "ME=[1-(VSWR-1/VSWR+1)2]*100","VSWR：Voltage Standing Wave Ratio","RL：Return loss","ME：matching efficiency"],
+    "t9":["dBm=10*Log(W*1000)","W：power","dBm：Decibel milliwatt"]
   }       
 }
