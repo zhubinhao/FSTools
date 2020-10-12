@@ -13,6 +13,9 @@
             <text class="title">{{z18n.t3}}:</text>
             <text class="title">{{Val||z18n.msg3}}</text>%
         </view>
+        <view  v-for="(item, index) in gs" :key="index" style="font-size: 28rpx;line-height: 50rpx;">
+            {{item}}
+        </view>
     </view>
 </template>
 
@@ -26,6 +29,7 @@ import { getBaseLog,float } from '@/utils/api';
 })
 export default class T8 extends Vue {
     @Provide() z18n: any = i18n.t('T8');
+    @Provide() gs: any = i18n.t('gs.t8');
     @Provide() id: string | null = null;
     @Provide() Val: string | number = '';
     @Provide() obj: any = {

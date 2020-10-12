@@ -22,6 +22,9 @@
             <text class="title">{{z18n.t5}}:</text>
             <text class="title">{{Val||z18n.msg3}}</text>0hms
         </view>
+        <view  v-for="(item, index) in gs" :key="index" style="font-size: 28rpx;line-height: 50rpx;">
+            {{item}}
+        </view>
     </view>
 </template>
 
@@ -36,6 +39,7 @@ import { gZo } from '@/utils/formula';
 })
 export default class T2 extends Vue {
     @Provide() z18n: any = i18n.t('T2');
+    @Provide() gs: any = i18n.t('gs.t2');
     @Provide() array: any = i18n.t('endsArray');
     @Provide() id: string | null = null;
     @Provide() arr: Array<any> = [0.93, 0.97, 1];

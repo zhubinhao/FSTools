@@ -8,6 +8,9 @@
             <text class="title">{{z18n.t2}}:</text>
             <input type="text" :placeholder="z18n.msg2" v-model="obj.D" @confirm="confirm('D')"  @input="click($event, 'D')"/>
         </view>
+        <view  v-for="(item, index) in gs" :key="index" style="font-size: 28rpx;line-height: 50rpx;">
+            {{item}}
+        </view>
     </view>
 </template>
 
@@ -21,6 +24,7 @@ import { getBaseLog, clearNoNum , float } from '@/utils/api';
 })
 export default class T9 extends Vue {
     @Provide() z18n: any = i18n.t('T9');
+    @Provide() gs: any = i18n.t('gs.t9');
     @Provide() obj: any = {
         W: '',
         D: '',

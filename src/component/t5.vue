@@ -18,6 +18,9 @@
             <text class="input">{{Val||z18n.msg3}}</text>
             °
         </view>
+        <view  v-for="(item, index) in gs" :key="index" style="font-size: 28rpx;line-height: 50rpx;">
+            {{item}}
+        </view>
     </view>
 </template>
 
@@ -31,6 +34,7 @@ import { float } from '@/utils/api';
 })
 export default class T5 extends Vue {
     @Provide() z18n: any = i18n.t('T5');
+    @Provide() gs: any = i18n.t('gs.t5');
     @Provide() Val: string | number = '';
 
     @Provide() obj: any = {

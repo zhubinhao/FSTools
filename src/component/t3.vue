@@ -20,6 +20,9 @@
             <text class="title">{{z18n.t5}}:</text>
             <text class="title">{{Val1||z18n.msg3}}</text>
         </view> -->
+        <view  v-for="(item, index) in gs" :key="index" style="font-size: 28rpx;line-height: 50rpx;">
+            {{item}}
+        </view>
     </view>
 </template>
 
@@ -33,6 +36,7 @@ import { getBaseLog, float } from '@/utils/api';
 })
 export default class T3 extends Vue {
     @Provide() z18n: any = i18n.t('T3');
+    @Provide() gs: any = i18n.t('gs.t3');
     @Provide() Val: string | number = '';
     @Provide() Val1: string | number = '';
     @Provide() obj: any = {

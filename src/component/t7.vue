@@ -22,6 +22,9 @@
             <text class="title">{{z18n.t5}}:</text>
             <text class="title">{{Val||z18n.msg3}}</text>GHz
         </view>
+        <view  v-for="(item, index) in gs" :key="index" style="font-size: 28rpx;line-height: 50rpx;">
+            {{item}}
+        </view>
     </view>
 </template>
 
@@ -35,6 +38,7 @@ import { float } from '@/utils/api';
 })
 export default class T7 extends Vue {
     @Provide() z18n: any = i18n.t('T7');
+    @Provide() gs: any = i18n.t('gs.t7');
     @Provide() array: any = i18n.t('endsArray');
     @Provide() id: string | null = null;
     @Provide() arr: Array<any> = [0.93, 0.97, 1];

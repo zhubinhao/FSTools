@@ -13,7 +13,9 @@
             <swiper-item v-for="item in listData" :key="item.prod_id">
                 <scroll-view scroll-y :style='{height:screenHeight,top:barHeight+"px"}' class="box" >
                     <image :src='item.prod_image' mode="widthFix" class="img" @click="preView(item.prod_image)"></image>
-                    <view @click="openFile(item.url,item.prod_file)" v-if="isuser&&item.url">查看附件</view>
+                    <view @click="openFile(item.url,item.prod_file)" v-if="isuser&&item.url">{{download}}</view>
+                    <view @click="native" wx:else>{{download}}</view>
+
                     <view style="height:160rpx"></view>
                     <view class="sc" v-if="isuser">
                         <text  @click="shouchang(item)">{{item.coll_id?"已收藏":"收藏"}}</text>
@@ -47,6 +49,7 @@ export default class Details extends Vue {
     @Provide() current: number = 0
     @Provide() title: any = i18n.t('bar.t5');
     @Provide() msg: string = '收藏';
+    @Provide() download:any = i18n.t('bar.download')
     @Provide() isuser:any =  uni.getStorageSync("isuser");
 
     @State barHeight!:number;
@@ -82,6 +85,12 @@ export default class Details extends Vue {
         uni.previewImage({
             urls: [url],
         })
+    }
+    native(){
+        uni.navigateTo({
+            url:"/pages/my/login"
+        })
+ 
     }
     async getData(option: any) {
         const data = {

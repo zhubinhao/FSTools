@@ -30,6 +30,10 @@
             <text class="title">{{z18n.t6}}:</text>
             <text class="title">{{Val||z18n.msg3}}</text> dB
         </view>
+        <view  v-for="(item, index) in gs" :key="index" style="font-size: 28rpx;line-height: 50rpx;">
+            {{item}}
+        </view>
+
     </view>
 </template>
 
@@ -46,6 +50,8 @@ import {gIL} from '@/utils/formula'
 })
 export default class T1 extends Vue {
     @Provide() z18n: any = i18n.t('T1');
+    @Provide() gs: any = i18n.t('gs.t1');
+
     @Provide() array: any = i18n.t('selectArray');
     @Provide() Lid: any  = '';
     @Provide() Rid: any  = '';
@@ -103,15 +109,17 @@ export default class T1 extends Vue {
 <style lang="scss" scoped>
 .T1 {
     padding: 60rpx 30rpx 0 90rpx;
+    
     .li {
         display: flex;
         justify-content: flex-start;
-        align-items: center;
+        align-items: center;   
         min-height: 80rpx;
         font-size: 28rpx;
         margin-bottom: 10px;
         .title {
             width: 250rpx;
+            word-break: break-all;
         }
         input,
         .input {
