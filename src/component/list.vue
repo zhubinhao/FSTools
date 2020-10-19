@@ -2,7 +2,7 @@
   <view class="content">
       <view class="com_list" @click="nativeTo(inner)">
       <view>
-        <text>{{inner.sty_style}}</text>
+        <text class="title">{{inner.sty_style}}</text>
         <text class="introduce">{{inner.sty_introduce||""}}</text>
       </view>
       <image :src='inner.sty_image'></image>
@@ -39,6 +39,10 @@ export default class List extends Vue {
     height: 200rpx;
     margin-left: 30rpx;
     border-radius: 4rpx;
+  }
+  .title{
+    font-size: 30rpx;
+    font-weight: bold;
   }
   view{
     flex: 1;

@@ -2,20 +2,20 @@
   <view class="Seach">
     <view class="li">
       <text>{{z18n.t1}}:</text>
-      <input type="number" v-model="ghz" :placeholder="z18n.msg2" />
+      <input type="digit" v-model="ghz" :placeholder="z18n.msg2" />
     </view>
 
     <view class="li">
       <text>{{z18n.t2}}:</text>
-      <input type="number" v-model="mm" :placeholder="z18n.msg2" />
+      <input type="digit" v-model="mm" :placeholder="z18n.msg2" />
     </view>
     <view class="li">
       <text>{{z18n.t3}}:</text>
-      <input type="number" v-model="db" :placeholder="z18n.msg2" />
+      <input type="digit" v-model="db" :placeholder="z18n.msg2" />
     </view>
     <view class="li">
       <text>{{z18n.t4}}:</text>
-      <input type="number" v-model="xs" :placeholder="z18n.msg2" />
+      <input type="digit" v-model="xs" :placeholder="z18n.msg2" />
     </view>
     <view class="seach" @click="seach">{{z18n.t5}}</view>
   </view>

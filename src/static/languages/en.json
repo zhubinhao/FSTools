@@ -23,7 +23,7 @@
     "t4": "Frequency(P)",               
     "t5": "Length(L)",               
     "t6": "OD of the cable(D)",        
-    "t7": "Frequency range(F)",         
+    "t7": "CUT OFF FREQUENCY(F)",          
     "t8": "Insertion loss(IL)",         
     "t9": "Voltage standing wave ratio(VSWR)",   
     "t10": "Time delay(Td)",             
