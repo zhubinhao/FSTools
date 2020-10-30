@@ -38,8 +38,8 @@
         <!--  频率范围 -->
         <view class='li1'>
             <text>{{z18n.t7}}:</text>
-            <view>{{listObj1.prod_field1||z18n.msg3}}</view>
-            <view>{{listObj2.prod_field1||z18n.msg3}}</view>GHZ
+            <view>{{listObj1.prod_field2||z18n.msg3}}</view>
+            <view>{{listObj2.prod_field2||z18n.msg3}}</view>GHZ
         </view>
         <!--  插入损耗 -->
         <view class='li1'>
@@ -161,7 +161,9 @@ export default class Contrast extends Vue {
         Info.VSWR = (Lid!=0||Rid!=0)?1.3:1.1
         Info.IL=gIL(this.obj.PL,this.obj.L,k1,k2,Lid,Rid)
 
-        Info.PG = (Info.prod_field26*(k1 * Math.sqrt(300) + k2*300)/(this.obj.PL*1000)).toFixed(2);
+        // Info.PG = ((k1 * Math.sqrt(300) + k2*300)/((this.obj.PL*1000))*Info.prod_field26).toFixed(5);
+        Info.PG = (((k1 * Math.sqrt(300) + k2*300)/(k1 * Math.sqrt(this.obj.PL*1000)+k2*this.obj.PL*1000))*Info.prod_field26).toFixed(5);
+
         if(Number(maxp)<this.obj.PL){
             for(let k in Info){
                 Info[k] = '超出频率范围'

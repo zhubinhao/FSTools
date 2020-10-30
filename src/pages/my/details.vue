@@ -3,7 +3,7 @@
         <bar :title="title" />
         <view :style="{paddingTop:barHeight+'px'}">
             <image :src='imgsrc' mode="widthFix" class="img" @click="preView(imgsrc)"></image>
-            <div class="download"  v-if="isuser&&url">
+            <div class="download"  v-if="url">
                 <image src="~@/static/img/pdf.jpg" @click="openFile(url,prod_file)"></image>
                 <view @click="openFile(url,prod_file)">{{download}}</view>
             </div>
@@ -41,6 +41,7 @@ export default class Details extends Vue {
     @State barHeight!: number;
 
     onLoad(option: any) {
+        console.log(option)
         this.imgsrc = option.img;
         this.id = option.id;
         this.url = option.url;

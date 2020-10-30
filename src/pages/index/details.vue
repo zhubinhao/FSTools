@@ -15,9 +15,9 @@
                     <image :src='item.prod_image' mode="widthFix" class="img" @click="preView(item.prod_image)"></image>
                     <div class="download" v-if="isuser&&item.url">
                         <image src="~@/static/img/pdf.jpg" ></image>
-                        <view @click="openFile(item.url,item.prod_file)" v-if="isuser&&item.url">{{download}}</view>
+                        <view @click="openFile(item.url,item.prod_file)">{{download}}</view>
                     </div>
-                    <div class="download" wx:if="!isuser">
+                    <div class="download" v-if="!isuser">
                         <image src="~@/static/img/pdf.jpg" ></image>
                         <view @click="native" >{{download}}</view>
                     </div>

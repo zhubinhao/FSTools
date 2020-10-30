@@ -96,9 +96,9 @@ export default class Bar extends Vue {
   background: white;
   .back {
     position: absolute;
-    left: 30rpx;
+    left: 10rpx;
     width: 50rpx;
-    padding: 10rpx 0;
+    padding: 10rpx 20rpx;
 
   }
   .blue {

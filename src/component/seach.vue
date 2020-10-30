@@ -73,7 +73,8 @@ export default class Seach extends Vue {
     height: 80rpx;
     font-size: 30rpx;
     text {
-      width: 280rpx;
+      width: 300rpx;
+      word-break: break-all;
     }
     input {
       width: 260rpx;

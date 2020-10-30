@@ -20,7 +20,7 @@
     "t1": "Cable type",            
     "t2": "Left end connector",         
     "t3": "Right end connector",         
-    "t4": "Frequency(P)",               
+    "t4": "Frequency(F)",               
     "t5": "Length(L)",               
     "t6": "OD of the cable(D)",        
     "t7": "CUT OFF FREQUENCY(F)",          
@@ -37,10 +37,10 @@
     "msg3": "Result of calculation"       
   },
   "seach": {
-    "t1": "Frequncy(GHz)",         
-    "t2": "Length(m)",          
-    "t3": "Attenuation requirements(dB)",      
-    "t4": "Connector attenuation coefficient",  
+    "t1": "Operating Frequency Range(GHz)",         
+    "t2": "Max Diameter Requirement(mm)",          
+    "t3": "Loss Per Meter(dB/m)",      
+    "t4": "Velocity of Propagation(%)",  
     "t5": "Search",                  
     "msg2": "Input text"          
   },
@@ -131,10 +131,10 @@
     "msg2": "Input text"        
   },
   "about":{
-    "t1":"postcode",     
-    "t2":"mailbox",     
-    "t3":"contact",  
-    "t4":"website"      
+    "t1":"Postcode",     
+    "t2":"Mailbox",     
+    "t3":"Contact",  
+    "t4":"Website"      
   },
   "project":{
     "t1":"Cable comaprision",       

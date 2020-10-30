@@ -32,6 +32,6 @@ export default class Seach extends Vue {
 <style lang="scss" scope>
 .Seach {
     position: relative;
-    padding: 0 30rpx;
+    padding: 30rpx;
 }
 </style>
