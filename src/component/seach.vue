@@ -33,6 +33,8 @@ import { imgUrl } from "@/utils/path";
 })
 export default class Seach extends Vue {
   @Provide() z18n: any = i18n.t("seach");
+  @Provide() toast: any = i18n.t("toast");
+
   @Provide() ghz: string = "";
   @Provide() mm: string = "";
   @Provide() db: string = "";
@@ -51,6 +53,15 @@ export default class Seach extends Vue {
       xs: this.xs,
       wx:uni.getStorageSync("openid"),
     };
+    console.log(data)
+    if(data.db&&!data.ghz){
+      console.log(1111)
+      wx.showToast({
+        title: this.toast,
+        icon:"none"
+      })
+      return
+    }
     const info = await http({ url: "/JY/Product_Find", data }).then(
       (res:any) => res.data
     );

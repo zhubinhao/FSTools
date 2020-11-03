@@ -153,5 +153,6 @@
     "t8":["RL=-20*Log[(VSWR-1)/(VSWR+1)]","RL=-20*Log[(VSWR-1)/(VSWR+1)]","VSWR=(1+10-RL/20)/(1-10-RL/20)x(-1)",
           "ME=[1-(VSWR-1/VSWR+1)2]*100","VSWR：Voltage Standing Wave Ratio","RL：Return loss","ME：matching efficiency"],
     "t9":["dBm=10*Log(W*1000)","W：power","dBm：Decibel milliwatt"]
-  }       
+  },
+  "toast":"Please Enter Operating Frequency"      
 }
