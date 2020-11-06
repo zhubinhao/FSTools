@@ -101,6 +101,9 @@ export default class Bar extends Vue {
     padding: 10rpx 20rpx;
 
   }
+  .icon-left{
+    font-size: 40rpx !important;
+  }
   .blue {
     color: #1296db;
   }

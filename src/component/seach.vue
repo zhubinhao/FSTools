@@ -81,7 +81,7 @@ export default class Seach extends Vue {
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    height: 80rpx;
+    height: 100rpx;
     font-size: 30rpx;
     text {
       width: 300rpx;
