@@ -2,8 +2,8 @@
     <view class="T1">
         <view class="li">
             <text class="title">{{z18n.t1}}:</text>
-            <picker @change="bindPickerChange1" :value="index" range-key="name" :range="cableList">
-                <view class="input" :class="{gray:!cableList[cableIndex].name}" >{{cableList[cableIndex].name||z18n.msg1}}</view>
+            <picker @change="bindPickerChange1" :value="index" range-key="prod_code" :range="cableList">
+                <view class="input" :class="{gray:!cableList[cableIndex].prod_code}" >{{cableList[cableIndex].prod_code||z18n.msg1}}</view>
             </picker>
         </view>
         <view class="li">
@@ -51,17 +51,14 @@ import {gIL} from '@/utils/formula'
 export default class T1 extends Vue {
     @Provide() z18n: any = i18n.t('T1');
     @Provide() gs: any = i18n.t('gs.t1');
-
+    @Provide() id: string = '';
     @Provide() array: any = i18n.t('selectArray');
     @Provide() Lid: any  = '';
     @Provide() Rid: any  = '';
     @Provide() cableIndex: string | null = null;
-    @Provide() k1: any = null;
-    @Provide() k2: any = null;
     @Provide() option:Array<any> = []
-
     @Provide() Val: string | number = '';
-    @Provide() cableList: any = cable;
+    @Provide() cableList: any = [];
 
     @Provide() obj: any = {
         F: '',
@@ -69,13 +66,14 @@ export default class T1 extends Vue {
     };
     mounted(){
         this.getType()
+        this.getCableList()
     }
     click(e: any, key: string): void {
         float(e, key, this);
         this.confirm()
     }
     confirm(): void {
-        if (this.obj.F && this.obj.M && this.k1) {
+        if (this.obj.F && this.obj.M && this.id) {
             this.getData();
         } else {
             this.Val = '';
@@ -86,17 +84,26 @@ export default class T1 extends Vue {
       this.option = data
 
     }
-    getData(): void {
+    async getCableList(){
+      const List = await http({ url: '/JY/Cable_List' }).then((res: any) => res.data);
+      this.cableList = List.filter((_:any)=>!_.prod_name.includes("结构"))
+      console.log(this.cableList)
+    }
+     
+    async getData() {
+        const Info = await http({url: '/JY/Cable_Info',data: { prod_id:this.id}}).then((res: any) => res.data[0]);
+        const k1 =Info.prod_field20
+        const k2 =Info.prod_field21
         let { F, M } = this.obj;
         let Lid = this.option[this.Lid].di_value||0;
         let Rid = this.option[this.Rid].di_value||0;
-        this.Val = gIL(F,M,this.k1,this.k2,Lid,Rid);
+        this.Val = gIL(F,M,k1,k2,Lid,Rid);
     }
     bindPickerChange1(e: any): void {
         const { value } = e.detail;
+        console.log(value)
         this.cableIndex = value;
-        this.k1 = this.cableList[value].k1;
-        this.k2 = this.cableList[value].k2;
+        this.id = this.cableList[value].prod_id
         this.confirm();
     }
     bindPickerChange(e: any, key: string): void {

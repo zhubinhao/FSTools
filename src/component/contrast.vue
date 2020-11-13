@@ -180,7 +180,6 @@ export default class Contrast extends Vue {
      click(e: any, key: string): void {
         float(e, key, this);
         this.confirm();
-
     }
 }
 </script>

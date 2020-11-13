@@ -1,7 +1,6 @@
 <template>
     <view class="Details">
         <bar :title="title" />
-
         <scroll-view scroll-x class='header' :scroll-into-view="`id${current}`" :style="{top:barHeight+'px'}">
             <view>
                 <block v-for="(item,index) in listData" :key="item.prod_id">
