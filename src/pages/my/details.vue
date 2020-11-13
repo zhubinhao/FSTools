@@ -73,7 +73,7 @@ export default class Details extends Vue {
         });
     }
     openFile(path: string, type: string) {
-        let ty: string = type.split('.')[1].toLowerCase();
+        let ty: any = type.split('.')[1].toLowerCase();
         let imageArr = ['bmp', 'jpg', 'jpeg', 'png', 'gif'];
         if (imageArr.includes(ty)) {
             wx.previewImage({

@@ -141,20 +141,22 @@ export default class Contrast extends Vue {
     }
     confirm():void{
         if(this.obj.PL&&this.obj.L){
-          this.list1&&this.getInfo(this.list1,'listObj1')
-          this.list2&&this.getInfo(this.list2,'listObj2')
+          this.list1&&this.getInfo(this.list1,'listObj1');
+          this.list2&&this.getInfo(this.list2,'listObj2');
+          (this.list2||this.list2)&&uni.showLoading({title:"计算中..."})
+
         }
     }
     async getData() {
         const List = await http({ url: '/JY/Cable_List' }).then((res: any) => res.data);
-        this.listArr = List
+        this.listArr = List.filter((_:any)=>!_.prod_name.includes("结构"))
     }
     async getInfo(index:string,key:string) {
         const prod_id = this.listArr[parseInt(index)].prod_id
         const Info:any = await http({url: '/JY/Cable_Info',data: { prod_id}}).then((res: any) => res.data[0]);
         const k1 =Info.prod_field20
         const k2 =Info.prod_field21
-        const maxp = Info.prod_field1.split('-')[1]
+        const maxp = Info.prod_field2
         let Lid = this.Lid?this.option[this.Lid].di_value||0:0;
         let Rid = this.Rid?this.option[this.Rid].di_value||0:0;
         console.log(Rid,Lid)
@@ -163,13 +165,17 @@ export default class Contrast extends Vue {
 
         // Info.PG = ((k1 * Math.sqrt(300) + k2*300)/((this.obj.PL*1000))*Info.prod_field26).toFixed(5);
         Info.PG = (((k1 * Math.sqrt(300) + k2*300)/(k1 * Math.sqrt(this.obj.PL*1000)+k2*this.obj.PL*1000))*Info.prod_field26).toFixed(5);
-
+        console.log(maxp)
         if(Number(maxp)<this.obj.PL){
             for(let k in Info){
                 Info[k] = '超出频率范围'
             }
         }
         (this as any)[key] =Info
+        let t = setTimeout(_=>{
+            uni.hideLoading()
+            clearTimeout(t)
+        },300)
     }
      click(e: any, key: string): void {
         float(e, key, this);

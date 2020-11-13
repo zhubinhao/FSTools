@@ -5,7 +5,7 @@
         <scroll-view scroll-x class='header' :scroll-into-view="`id${current}`" :style="{top:barHeight+'px'}">
             <view>
                 <block v-for="(item,index) in listData" :key="item.prod_id">
-                    <text :class='{active:current===index}' :id="`id${index-2}`" @click="changeBar(index)">{{item.prod_code}}</text>
+                    <text :class='{active:current===index}' :id="`id${index}`" @click="changeBar(index)">{{item.prod_code}}</text>
                 </block>
             </view>
         </scroll-view>
@@ -61,8 +61,7 @@ export default class Details extends Vue {
     @State barHeight!: number;
 
     onLoad(option: any) {
-        this.screenHeight =
-            (uni.getSystemInfoSync().windowHeight || 655) - 10 + 'px';
+        this.screenHeight =(uni.getSystemInfoSync().windowHeight || 655) - 10 + 'px';
         this.getData(option);
     }
     shouchang(item: any) {
@@ -129,7 +128,7 @@ export default class Details extends Vue {
         });
     }
     openFile(path: string, type: string) {
-        let ty: string = type.split('.')[1].toLowerCase();
+        let ty: any = type.split('.')[1].toLowerCase();
         let imageArr = ['bmp', 'jpg', 'jpeg', 'png', 'gif'];
         if (imageArr.includes(ty)) {
             wx.previewImage({
@@ -189,6 +188,7 @@ export default class Details extends Vue {
         text {
             margin-right: 30rpx;
             line-height: 58rpx;
+            white-space: nowrap;
         }
         .active {
             color: #4379fe;

@@ -72,6 +72,7 @@ export default class T1 extends Vue {
     }
     click(e: any, key: string): void {
         float(e, key, this);
+        this.confirm()
     }
     confirm(): void {
         if (this.obj.F && this.obj.M && this.k1) {

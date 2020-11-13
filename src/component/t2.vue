@@ -50,16 +50,9 @@ export default class T2 extends Vue {
         d: '',
         x: '',
     };
-
-    // @Watch('obj', { deep: true })
-    // hander(a: any) {
-    //     if (this.obj.Vp && this.obj.D && this.obj.d && this.obj.x) {
-    //     } else {
-    //         this.Val = '';
-    //     }
-    // }
     click(e: any, key: string): void {
         float(e, key, this);
+        this.confirm()
     }
     confirm(): void {
         if (this.obj.Vp && this.obj.D && this.obj.d && this.obj.x) {
