@@ -11,7 +11,7 @@ export const gIL = (F: any, M: any, k1: any, k2: any, Lid: any, Rid: any) => {
 
 // 阻抗
 export const gZo = (Vp: any, D: any, d: any, X: any) => {
-    let Val = ((138 * Vp * getBaseLog((D / d) * X)) / 100).toFixed(2);
+    let Val = ((138 * Vp * getBaseLog(D / (d * X))) / 100).toFixed(2);
     return Val
 }
 
