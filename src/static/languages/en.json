@@ -78,7 +78,7 @@
   },
   "T3": {
     "t1": "Speed(Vp)",                   
-    "t2": "Permittivity",                   
+    "t2": "Permittivity(ε)",                   
     "t3": "Time delay(T)",                     
     "msg2": "Input text"                  
   },
