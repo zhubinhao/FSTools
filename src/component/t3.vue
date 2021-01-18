@@ -6,7 +6,7 @@
     </view>
     <view class="li">
       <text class="title">{{z18n.t3}}:</text>
-      <input type="text" :placeholder="z18n.msg2" v-model="obj.Td" @confirm="confirm('Td')" @input="click($event, 'Td')" /> ns/m
+      <input type="text" :placeholder="z18n.msg2" v-model="obj.Td" @confirm="confirm('Td')" @input="click($event, 'Td')" /> nS/m
     </view>
     <view class="li">
       <text class="title">{{z18n.t2}}:</text>
